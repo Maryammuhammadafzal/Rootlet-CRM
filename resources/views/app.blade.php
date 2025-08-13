@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html @class(['light' => ($appearance ?? 'light') == 'light'])>
+<html @class(['light' => ($appearance ?? 'system') == 'dark'])>
 
 <head>
     <meta charset="utf-8">
@@ -8,31 +8,23 @@
     {{-- Inline script to detect system dark mode preference and apply it immediately --}}
     <script>
         (function () {
-            console.log(document);
-            
-            const appearance = '{{ $appearance ?? "light" }}'; // default light
+            const appearance = '{{ $appearance ?? "light" }}';
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
             if (appearance === 'dark') {
-               console.log(appearance);
-               
+                document.documentElement.classList.add('dark');
+            } else if (appearance === 'system' || prefersDark) {
+                console.log(appearance, prefersDark);
                 document.documentElement.classList.remove('dark');
-            }
-            if (appearance === 'system') {
-                console.log(appearance);
-              const removedbg = document.documentElement.classList.remove('dark');
-              console.log(document.documentElement.classList.add();
-              
-                const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-                if (prefersDark) {
-                    document.documentElement.classList.remove('dark');
-                }
             }
         })();
     </script>
 
+
     {{-- Inline style to set the HTML background color based on our theme in app.css --}}
     <style>
         html {
-            background-color:  oklch(0.145 0 0);
+            background-color: oklch(0.145 0 0);
         }
 
         html.dark {
