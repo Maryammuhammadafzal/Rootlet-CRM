@@ -15,7 +15,7 @@ export default function AuthSimpleLayout({ children, title, description, bgImage
         <div className="flex h-screen flex-col gap-6 bg-background">
             <div className="w-full flex h-full md:flex-row flex-col">
                 <div className='w-1/2 pl-20 h-full pr-10 py-10'>
-                    <div className="flex flex-col h-full gap-24">
+                    <div className="flex flex-col h-full gap-16">
                         {/* Logo */}
                         <div className="ml-3 flex flex-col h-fit gap-4">
                             <Link href={route('home')} className="flex flex-col gap-2 font-medium">
@@ -28,7 +28,7 @@ export default function AuthSimpleLayout({ children, title, description, bgImage
 
                         {/* Content */}
                         <div className='flex flex-col h-auto w-full'>
-                            <div className="mb-14">
+                            <div className="mb-10">
                                 <h1 className=" text-3xl font-bold uppercase">{title}</h1>
                             </div>
                             {children}

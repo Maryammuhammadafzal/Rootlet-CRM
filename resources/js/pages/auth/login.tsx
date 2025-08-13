@@ -36,7 +36,7 @@ export default function Login({ status, canResetPassword }: LoginProps) {
     };
 
     return (
-        <AuthLayout title="Login" description="Enter your email and password below to log in" image='/images/dashboard-image.png' bgImage='/images/dashboard-bg.png'>
+        <AuthLayout title="Login" description="Enter your email and password below to log in" bgImage='/images/dashboard-bg.png'>
             <Head title="Log in" />
 
             <form method="POST" className="flex flex-col gap-28 justify-center" onSubmit={submit}>
