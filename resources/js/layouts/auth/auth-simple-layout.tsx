@@ -10,12 +10,12 @@ interface AuthLayoutProps {
     description?: string;
 }
 
-export default function AuthSimpleLayout({ children, title, description }: PropsWithChildren<AuthLayoutProps>) {
+export default function AuthSimpleLayout({ children, title, description, bgImage }: PropsWithChildren<AuthLayoutProps>) {
     return (
         <div className="flex h-screen flex-col gap-6 bg-background">
             <div className="w-full flex h-full md:flex-row flex-col">
                 <div className='w-1/2 pl-20 h-full pr-10 py-10'>
-                    <div className="flex flex-col h-full gap-8 justify-between">
+                    <div className="flex flex-col h-full gap-24">
                         {/* Logo */}
                         <div className="ml-3 flex flex-col h-fit gap-4">
                             <Link href={route('home')} className="flex flex-col gap-2 font-medium">
@@ -37,7 +37,7 @@ export default function AuthSimpleLayout({ children, title, description }: Props
                 </div>
 
                 <div className='image flex w-1/2'>
-                
+                <img src={bgImage} alt="dashboard-image" className='w-full h-full object-cover' />
                 </div>
             </div>
         </div>
