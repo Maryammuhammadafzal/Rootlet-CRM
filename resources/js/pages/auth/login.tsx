@@ -36,13 +36,13 @@ export default function Login({ status, canResetPassword }: LoginProps) {
     };
 
     return (
-        <AuthLayout title="Login" description="Enter your email and password below to log in">
+        <AuthLayout title="Login" description="Enter your email and password below to log in" image='/images/dashboard-image.png' bgImage='/images/dashboard-bg.png'>
             <Head title="Log in" />
 
-            <form method="POST" className="flex flex-col gap-6" onSubmit={submit}>
+            <form method="POST" className="flex flex-col gap-28 justify-center" onSubmit={submit}>
                 <div className="grid gap-6">
                     <div className="grid gap-2">
-                        <Label htmlFor="email">Email address</Label>
+                        <Label htmlFor="email" className='text-base font-semibold text-black'>Email</Label>
                         <Input
                             id="email"
                             type="email"
@@ -53,18 +53,14 @@ export default function Login({ status, canResetPassword }: LoginProps) {
                             value={data.email}
                             onChange={(e) => setData('email', e.target.value)}
                             placeholder="email@example.com"
+                            className='max-w-sm h-[40px] px-7 text-xs font-light rounded-xl'
                         />
                         <InputError message={errors.email} />
                     </div>
 
                     <div className="grid gap-2">
-                        <div className="flex items-center">
-                            <Label htmlFor="password">Password</Label>
-                            {canResetPassword && (
-                                <TextLink href={route('password.request')} className="ml-auto text-sm" tabIndex={5}>
-                                    Forgot password?
-                                </TextLink>
-                            )}
+                        <div className="flex">
+                            <Label htmlFor="password" className='text-base font-semibold text-black'>Password</Label>
                         </div>
                         <Input
                             id="password"
@@ -75,11 +71,17 @@ export default function Login({ status, canResetPassword }: LoginProps) {
                             value={data.password}
                             onChange={(e) => setData('password', e.target.value)}
                             placeholder="Password"
+                            className='max-w-sm h-[40px] px-7 text-xs font-light rounded-xl'
                         />
                         <InputError message={errors.password} />
+                        {canResetPassword && (
+                            <TextLink href={route('password.request')} className="text-xs font-normal text-[#1877F2] underline-offset-0" tabIndex={5}>
+                                Forgot password?
+                            </TextLink>
+                        )}
                     </div>
 
-                    <div className="flex items-center space-x-3">
+                    {/* <div className="flex items-center space-x-3">
                         <Checkbox
                             id="remember"
                             name="remember"
@@ -88,18 +90,18 @@ export default function Login({ status, canResetPassword }: LoginProps) {
                             tabIndex={3}
                         />
                         <Label htmlFor="remember">Remember me</Label>
-                    </div>
+                    </div> */}
 
-                    <Button type="submit" className="mt-4 w-full" tabIndex={4} disabled={processing}>
+                    <Button type="submit" className="mt-2 max-w-sm" tabIndex={4} disabled={processing}>
                         {processing && <LoaderCircle className="h-4 w-4 animate-spin" />}
                         Log in
                     </Button>
                 </div>
 
-                <div className="text-center text-sm text-muted-foreground">
+                <div className="ml-3 text-sm text-[#1877F2]">
                     Don't have an account?{' '}
-                    <TextLink href={route('register')} tabIndex={5}>
-                        Sign up
+                    <TextLink href={route('register')} className='text-[#1877F2]' tabIndex={5}>
+                       Create an account
                     </TextLink>
                 </div>
             </form>
