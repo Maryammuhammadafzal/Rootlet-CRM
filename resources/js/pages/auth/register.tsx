@@ -34,7 +34,7 @@ export default function Register() {
     return (
         <AuthLayout title="Create an account" description="Enter your details below to create your account" bgImage='/images/dashboard-bg.png'>
             <Head title="Register" />
-            <form method="POST" className="flex flex-col gap-4" onSubmit={submit}>
+            <form method="POST" className="flex flex-col gap-24 justify-center" onSubmit={submit}>
                 <div className="grid gap-4">
                     <div className="grid gap-2">
                         <Label htmlFor="name" className='text-base font-semibold text-black'>Name</Label>
@@ -88,7 +88,7 @@ export default function Register() {
                         <InputError message={errors.password} />
                     </div>
 
-                    <div className="grid gap-2">
+                    {/* <div className="grid gap-2">
                         <Label htmlFor="password_confirmation" className='text-base font-semibold text-black'>Confirm password</Label>
                         <Input
                             id="password_confirmation"
@@ -103,7 +103,7 @@ export default function Register() {
                             className='max-w-sm h-[40px] px-7 text-xs font-light rounded-xl'
                         />
                         <InputError message={errors.password_confirmation} />
-                    </div>
+                    </div> */}
 
                     <Button type="submit" className="mt-2 max-w-sm" tabIndex={5} disabled={processing}>
                         {processing && <LoaderCircle className="h-4 w-4 animate-spin" />}
@@ -111,7 +111,7 @@ export default function Register() {
                     </Button>
                 </div>
 
-                <div className="ml-3 text-sm text-[#1877F2]">
+                <div className="ml-3 mt-auto text-sm text-[#1877F2]">
                     Already have an account?{' '}
                     <TextLink href={route('login')} className='text-[#1877F2]' tabIndex={6}>
                         Log in

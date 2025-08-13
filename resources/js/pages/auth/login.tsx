@@ -39,7 +39,7 @@ export default function Login({ status, canResetPassword }: LoginProps) {
         <AuthLayout title="Login" description="Enter your email and password below to log in" bgImage='/images/dashboard-bg.png'>
             <Head title="Log in" />
 
-            <form method="POST" className="flex flex-col gap-28 justify-center" onSubmit={submit}>
+            <form method="POST" className="flex flex-col gap-24 justify-center" onSubmit={submit}>
                 <div className="grid gap-6">
                     <div className="grid gap-2">
                         <Label htmlFor="email" className='text-base font-semibold text-black'>Email</Label>
@@ -98,7 +98,7 @@ export default function Login({ status, canResetPassword }: LoginProps) {
                     </Button>
                 </div>
 
-                <div className="ml-3 text-sm text-[#1877F2]">
+                <div className="ml-3 mt-auto text-sm text-[#1877F2]">
                     Don't have an account?{' '}
                     <TextLink href={route('register')} className='text-[#1877F2]' tabIndex={5}>
                        Create an account
