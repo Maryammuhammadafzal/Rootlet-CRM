@@ -26,7 +26,7 @@ export default function VerifyEmail({ status }: { status?: string }) {
                 </div>
             )}
 
-            <form onSubmit={submit} className="space-y-6 text-center">
+            <form onSubmit={submit} className="space-y-6">
                 <Button disabled={processing} className="mt-2 max-w-sm" variant="secondary">
                     {processing && <LoaderCircle className="h-4 w-4 animate-spin" />}
                     Resend verification email

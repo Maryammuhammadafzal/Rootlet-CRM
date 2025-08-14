@@ -37,7 +37,7 @@ export default function AuthSimpleLayout({ children, title, description, bgImage
                 </div>
 
                 <div className='image flex w-1/2'>
-                <img src={bgImage} alt="dashboard-image" className='w-full h-full object-cover' />
+                {bgImage && (<img src={bgImage} alt="dashboard-image" className='w-full h-full object-cover' />)}
                 </div>
             </div>
         </div>

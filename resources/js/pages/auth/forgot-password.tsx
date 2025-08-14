@@ -27,7 +27,7 @@ export default function ForgotPassword({ status }: { status?: string }) {
 
             {status && <div className="mb-4 text-center text-sm font-medium text-green-600">{status}</div>}
 
-            <div className="space-y-6">
+            <div className="space-y-16">
                 <form method="POST" onSubmit={submit}>
                     <div className="grid gap-2">
                         <Label htmlFor="email" className='text-base font-semibold text-black'>Email address</Label>

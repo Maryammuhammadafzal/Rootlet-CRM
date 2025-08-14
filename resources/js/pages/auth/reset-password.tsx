@@ -39,7 +39,7 @@ export default function ResetPassword({ token, email }: ResetPasswordProps) {
         <AuthLayout title="Reset password" description="Please enter your new password below" bgImage=''>
             <Head title="Reset password" />
 
-            <form method="POST" onSubmit={submit}>
+            <form method="POST" onSubmit={submit}  className="flex flex-col gap-24 justify-center">
                 <div className="grid gap-6">
                     <div className="grid gap-2">
                         <Label htmlFor="email">Email</Label>
