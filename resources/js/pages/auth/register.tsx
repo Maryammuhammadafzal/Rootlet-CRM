@@ -13,7 +13,7 @@ type RegisterForm = {
     name: string;
     email: string;
     password: string;
-    password_confirmation: string;
+    // password_confirmation: string;
 };
 
 export default function Register() {
@@ -21,7 +21,7 @@ export default function Register() {
         name: '',
         email: '',
         password: '',
-        password_confirmation: '',
+        // password_confirmation: '',
     });
 
     const submit: FormEventHandler = (e) => {
@@ -34,8 +34,8 @@ export default function Register() {
     return (
         <AuthLayout title="Create an account" description="Enter your details below to create your account" bgImage='/images/dashboard-bg.png'>
             <Head title="Register" />
-            <form method="POST" className="flex flex-col gap-24 justify-center" onSubmit={submit}>
-                <div className="grid gap-4">
+            <form method="POST" className="flex flex-col gap-6 justify-center" onSubmit={submit}>
+                <div className="grid gap-3">
                     <div className="grid gap-2">
                         <Label htmlFor="name" className='text-base font-semibold text-black'>Name</Label>
                         <Input
@@ -87,8 +87,8 @@ export default function Register() {
                         />
                         <InputError message={errors.password} />
                     </div>
-
-                    {/* <div className="grid gap-2">
+{/* 
+                    <div className="grid gap-2">
                         <Label htmlFor="password_confirmation" className='text-base font-semibold text-black'>Confirm password</Label>
                         <Input
                             id="password_confirmation"

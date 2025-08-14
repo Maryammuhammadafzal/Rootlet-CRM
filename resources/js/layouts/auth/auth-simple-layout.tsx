@@ -30,6 +30,7 @@ export default function AuthSimpleLayout({ children, title, description, bgImage
                         <div className='flex flex-col h-auto w-full'>
                             <div className="mb-12">
                                 <h1 className=" text-3xl font-bold uppercase">{title}</h1>
+                                <p className="text-sm text-black pt-2">{description}</p>
                             </div>
                             {children}
                         </div>
