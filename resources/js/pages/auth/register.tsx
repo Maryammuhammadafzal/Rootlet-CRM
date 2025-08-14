@@ -49,7 +49,7 @@ export default function Register() {
                             onChange={(e) => setData('name', e.target.value)}
                             disabled={processing}
                             placeholder="Full name"
-                            className='max-w-sm h-[40px] px-7 text-xs font-light rounded-xl'
+                            className='max-w-sm h-[40px] px-7 text-black text-xs font-light rounded-xl'
                         />
                         <InputError message={errors.name} className="mt-2" />
                     </div>
@@ -66,7 +66,7 @@ export default function Register() {
                             onChange={(e) => setData('email', e.target.value)}
                             disabled={processing}
                             placeholder="email@example.com"
-                            className='max-w-sm h-[40px] px-7 text-xs font-light rounded-xl'
+                            className='max-w-sm h-[40px] px-7 text-black text-xs font-light rounded-xl'
                         />
                         <InputError message={errors.email} />
                     </div>
@@ -83,7 +83,7 @@ export default function Register() {
                             onChange={(e) => setData('password', e.target.value)}
                             disabled={processing}
                             placeholder="Password"
-                            className='max-w-sm h-[40px] px-7 text-xs font-light rounded-xl'
+                            className='max-w-sm h-[40px] px-7 text-black text-xs font-light rounded-xl'
                         />
                         <InputError message={errors.password} />
                     </div>

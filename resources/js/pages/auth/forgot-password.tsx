@@ -40,7 +40,7 @@ export default function ForgotPassword({ status }: { status?: string }) {
                             autoFocus
                             onChange={(e) => setData('email', e.target.value)}
                             placeholder="email@example.com"
-                            className='max-w-sm h-[40px] px-7 text-xs font-light rounded-xl'
+                            className='max-w-sm h-[40px] px-7 text-black text-xs font-light rounded-xl'
                         />
 
                         <InputError message={errors.email} />
@@ -55,7 +55,7 @@ export default function ForgotPassword({ status }: { status?: string }) {
                 </form>
 
                 <div className="ml-3 mt-auto text-sm text-[#1877F2]">
-                    <span>Back to</span>
+                    <span>Back to</span>{' '}
                     <TextLink href={route('login')} className='text-[#1877F2]'>log in</TextLink>
                 </div>
             </div>

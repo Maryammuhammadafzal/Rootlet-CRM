@@ -36,7 +36,7 @@ export default function ResetPassword({ token, email }: ResetPasswordProps) {
     };
 
     return (
-        <AuthLayout title="Reset password" description="Please enter your new password below">
+        <AuthLayout title="Reset password" description="Please enter your new password below" bgImage='/images/dashboard-bg.png'>
             <Head title="Reset password" />
 
             <form method="POST" onSubmit={submit}>
@@ -49,7 +49,7 @@ export default function ResetPassword({ token, email }: ResetPasswordProps) {
                             name="email"
                             autoComplete="email"
                             value={data.email}
-                            className="mt-1 block w-full"
+                            className="mt-1 block max-w-sm h-[40px] px-7 text-xs font-light rounded-xl"
                             readOnly
                             onChange={(e) => setData('email', e.target.value)}
                         />
@@ -68,6 +68,7 @@ export default function ResetPassword({ token, email }: ResetPasswordProps) {
                             autoFocus
                             onChange={(e) => setData('password', e.target.value)}
                             placeholder="Password"
+                            className='max-w-sm h-[40px] px-7 text-xs font-light rounded-xl'
                         />
                         <InputError message={errors.password} />
                     </div>
@@ -83,11 +84,12 @@ export default function ResetPassword({ token, email }: ResetPasswordProps) {
                             className="mt-1 block w-full"
                             onChange={(e) => setData('password_confirmation', e.target.value)}
                             placeholder="Confirm password"
+                            className='max-w-sm h-[40px] px-7 text-xs font-light rounded-xl'
                         />
                         <InputError message={errors.password_confirmation} className="mt-2" />
                     </div>
 
-                    <Button type="submit" className="mt-4 w-full" disabled={processing}>
+                    <Button type="submit" className="mt-2 max-w-sm" disabled={processing}>
                         {processing && <LoaderCircle className="h-4 w-4 animate-spin" />}
                         Reset password
                     </Button>

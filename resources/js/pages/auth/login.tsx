@@ -53,7 +53,7 @@ export default function Login({ status, canResetPassword }: LoginProps) {
                             value={data.email}
                             onChange={(e) => setData('email', e.target.value)}
                             placeholder="email@example.com"
-                            className='max-w-sm h-[40px] px-7 text-xs font-light rounded-xl'
+                            className='max-w-sm h-[40px] px-7 text-xs text-black font-light rounded-xl'
                         />
                         <InputError message={errors.email} />
                     </div>
@@ -71,7 +71,7 @@ export default function Login({ status, canResetPassword }: LoginProps) {
                             value={data.password}
                             onChange={(e) => setData('password', e.target.value)}
                             placeholder="Password"
-                            className='max-w-sm h-[40px] px-7 text-xs font-light rounded-xl'
+                            className='max-w-sm h-[40px] px-7 text-black text-xs font-light rounded-xl'
                         />
                         <InputError message={errors.password} />
                         {canResetPassword && (
