@@ -113,13 +113,13 @@ export default function Dashboard() {
                                 <div className='flex flex-col w-full h-auto gap-3'>
                                     {
                                         departmentCard && departmentCard.map((dept, index) => (
-                                            <div className='rounded-xl w-full bg-accent h-auto p-4 flex items-center gap-3'>
+                                            <div className='rounded-xl w-full bg-card h-auto p-4 flex items-center gap-5'>
                                                 <div className='w-auto h-auto'>
                                                     <img src={dept.icon} alt="department-icn" />
                                                 </div>
-                                                <div className='flex flex-col gap-2'>
-                                                    <h2 className='text-primary text-2xl font-semibold'>{dept.title}</h2>
-                                                    <p className='text-primary/50 text-sm font-semibold'>{dept.employees} employees</p>
+                                                <div className='flex flex-col'>
+                                                    <h2 className='text-primary font-medium'>{dept.title}</h2>
+                                                    <p className='text-primary/50 text-sm'>{dept.employees} employees</p>
                                                 </div>
                                             </div>
                                         ))
