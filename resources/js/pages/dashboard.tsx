@@ -1,5 +1,5 @@
 import { CardProgress } from '@/components/card-progress';
-import { Card, CardContent } from '@/components/ui/card';
+import { Card, CardContent, CardTitle } from '@/components/ui/card';
 import { PlaceholderPattern } from '@/components/ui/placeholder-pattern';
 import { Progress } from '@/components/ui/progress';
 import AppLayout from '@/layouts/app-layout';
@@ -48,7 +48,9 @@ const dashboardCardData: DashboardCard[] = [
         description: 'Employee leaves',
         color: '#377DFF'
     },
-]
+];
+
+
 
 export default function Dashboard() {
     return (
@@ -59,7 +61,7 @@ export default function Dashboard() {
                     {dashboardCardData && dashboardCardData.map((item, index) => (
                         <div key={index} className="relative aspect-video overflow-hidden rounded-xl border border-sidebar-border/70 dark:border-sidebar-border">
                             {/* <div className="absolute inset-0 size-full stroke-neutral-900/20 dark:stroke-neutral-100/20" /> */}
-                            <Card className={`bg-[${item.color}] text-accent size-full dark:bg-accent dark:text-primary`}>
+                            <Card className={`bg-[${item.color}] text-accent size-full dark:text-primary`}>
                                 <CardContent className='flex gap-2 justify-between'>
                                     <div className='flex flex-col gap-3'>
                                         <h3 className='text-sm'>{item.title}</h3>
@@ -77,18 +79,20 @@ export default function Dashboard() {
                         </div>
 
                     ))}
-                    <div className="relative aspect-video overflow-hidden rounded-xl border border-sidebar-border/70 dark:border-sidebar-border">
-                        <PlaceholderPattern className="absolute inset-0 size-full stroke-neutral-900/20 dark:stroke-neutral-100/20" />
-                    </div>
-                    <div className="relative aspect-video overflow-hidden rounded-xl border border-sidebar-border/70 dark:border-sidebar-border">
-                        <PlaceholderPattern className="absolute inset-0 size-full stroke-neutral-900/20 dark:stroke-neutral-100/20" />
-                    </div>
-                    <div className="relative aspect-video overflow-hidden rounded-xl border border-sidebar-border/70 dark:border-sidebar-border">
-                        <PlaceholderPattern className="absolute inset-0 size-full stroke-neutral-900/20 dark:stroke-neutral-100/20" />
-                    </div>
                 </div>
-                <div className="relative min-h-[100vh] flex-1 overflow-hidden rounded-xl border border-sidebar-border/70 md:min-h-min dark:border-sidebar-border">
-                    <PlaceholderPattern className="absolute inset-0 size-full stroke-neutral-900/20 dark:stroke-neutral-100/20" />
+                <div className="relative min-h-[100vh] flex-1 overflow-hidden rounded-xl gap-5  md:min-h-min dark:border-sidebar-border grid md:grid-cols-3">
+                    <div className='col-span-2 bg-primary/5 rounded-xl size-full'>
+
+                    </div>
+                    {/* Department */}
+                    <div className='col-span-1 bg-primary/5 rounded-xl size-full'>
+                        <Card className='bg-transparent shadow-none border-0'>
+                            <CardContent>
+                                <h2 className='font-medium text-xl'>Department</h2>
+                                <div className=''></div>
+                            </CardContent>
+                        </Card>
+                    </div>
                 </div>
             </div>
         </AppLayout>

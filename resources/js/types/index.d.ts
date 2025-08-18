@@ -51,7 +51,12 @@ export interface DashboardCard {
     title: string;
     progress: number;
     count: number;
-    icon?:  LucideIcon | null;
+    icon?: LucideIcon | null;
     description: string;
-    color: string
+    color: string;
+}
+export interface DepartmentCard {
+    title: string;
+    employees: number;
+    icon?: string;
 }
