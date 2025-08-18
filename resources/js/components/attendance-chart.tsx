@@ -79,7 +79,7 @@ let monthsArray = [
     { month: "Nov", present: 50, halfday: 15, absent: 20 },
     { month: "Dec", present: 15, halfday: 12, absent: 20 },
 ]
-let yearsArray = [,
+let yearsArray = [
     { year: "2019", present: 40, halfday: 35, absent: 15 },
     { year: "2020", present: 65, halfday: 15, absent: 25 },
     { year: "2021", present: 40, halfday: 40, absent: 20 },
@@ -114,20 +114,22 @@ const chartConfig = {
 // } satisfies ChartConfig
 
 export function AttendanceChart() {
-    const [isChecked, setIsChecked] = useState<'Days' | 'Month' | 'Year'>('Month')
+   const [isChecked, setIsChecked] = useState<'Days' | 'Month' | 'Year'>('Month')
+const [chartData, setChartData] = useState<any>(monthsArray) // default chart data
 
-    const handleChecked = (value: string) => {
-        setIsChecked(value)
-        if (isChecked === 'Days') {
-            chartData = daysArray;
-        } else if (isChecked === 'Month') {
-            chartData = monthsArray;
-        } else if (isChecked === 'Year') {
-            chartData = yearsArray;
-        } else {
-            chartData = monthsArray;
-        }
-    }
+const handleChecked = (value: 'Days' | 'Month' | 'Year') => {
+  setIsChecked(value)
+
+  if (value === 'Days') {
+    setChartData(daysArray)
+    console.log(chartData);
+    
+  } else if (value === 'Month') {
+    setChartData(monthsArray)
+  } else if (value === 'Year') {
+    setChartData(yearsArray)
+  }
+}
 
     return (
         <>
@@ -163,8 +165,8 @@ export function AttendanceChart() {
                                 </SelectTrigger>
                                 <SelectContent>
                                     <SelectItem onClick={() =>handleChecked('Days')} value="Days">Days</SelectItem>
-                                    <SelectItem onClick={handleChecked} value="Month">Month</SelectItem>
-                                    <SelectItem onClick={handleChecked} value="Year">Year</SelectItem>
+                                    <SelectItem onClick={() => handleChecked('Month')} value="Month">Month</SelectItem>
+                                    <SelectItem onClick={() =>handleChecked('Year')} value="Year">Year</SelectItem>
                                 </SelectContent>
                             </Select>
                         </div>
@@ -237,9 +239,9 @@ export function AttendanceChart() {
                                     <SelectValue placeholder="Select" />
                                 </SelectTrigger>
                                 <SelectContent>
-                                    <SelectItem onClick={handleChecked} value="Days">Days</SelectItem>
-                                    <SelectItem onClick={handleChecked} value="Month">Month</SelectItem>
-                                    <SelectItem onClick={handleChecked} value="Year">Year</SelectItem>
+                                    <SelectItem onClick={() =>handleChecked('Days')} value="Days">Days</SelectItem>
+                                    <SelectItem onClick={()=>handleChecked('Month')} value="Month">Month</SelectItem>
+                                    <SelectItem onClick={()=>handleChecked('Year')} value="Year">Year</SelectItem>
                                 </SelectContent>
                             </Select>
                         </div>
@@ -312,9 +314,9 @@ export function AttendanceChart() {
                                     <SelectValue placeholder="Select" />
                                 </SelectTrigger>
                                 <SelectContent>
-                                    <SelectItem onClick={handleChecked} value="Days">Days</SelectItem>
-                                    <SelectItem onClick={handleChecked} value="Month">Month</SelectItem>
-                                    <SelectItem onClick={handleChecked} value="Year">Year</SelectItem>
+                                    <SelectItem onClick={() =>handleChecked('Days')} value="Days">Days</SelectItem>
+                                    <SelectItem onClick={()=>handleChecked('Month')} value="Month">Month</SelectItem>
+                                    <SelectItem onClick={()=>handleChecked('Year')} value="Year">Year</SelectItem>
                                 </SelectContent>
                             </Select>
                         </div>
@@ -324,7 +326,7 @@ export function AttendanceChart() {
                             <BarChart data={chartData} >
                                 <CartesianGrid vertical={false} strokeDasharray="3 6" />
                                 <XAxis
-                                    dataKey="month"
+                                    dataKey="year"
                                     tickMargin={15}
                                     tickLine={false}
                                     axisLine={false}
