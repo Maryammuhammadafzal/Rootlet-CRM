@@ -1,3 +1,4 @@
+import { AttendanceChart } from '@/components/attendance-chart';
 import { CardProgress } from '@/components/card-progress';
 import { Card, CardContent, CardTitle } from '@/components/ui/card';
 import { PlaceholderPattern } from '@/components/ui/placeholder-pattern';
@@ -101,9 +102,9 @@ export default function Dashboard() {
 
                     ))}
                 </div>
-                <div className="relative min-h-[100vh] flex-1 overflow-hidden rounded-xl gap-5  md:min-h-min dark:border-sidebar-border grid md:grid-cols-3">
+                <div className="relative min-h-[100vh] flex-1 overflow-hidden rounded-xl gap-5  md:min-h-min grid md:grid-cols-3">
                     <div className='col-span-2 bg-primary/5 rounded-xl size-full'>
-
+                        <AttendanceChart />
                     </div>
                     {/* Department */}
                     <div className='col-span-1 bg-primary/5 rounded-xl size-full'>
@@ -113,7 +114,7 @@ export default function Dashboard() {
                                 <div className='flex flex-col w-full h-auto gap-3'>
                                     {
                                         departmentCard && departmentCard.map((dept, index) => (
-                                            <div className='rounded-xl w-full bg-card h-auto p-4 flex items-center gap-5'>
+                                            <div className='rounded-xl w-full bg-card h-auto p-3 flex items-center gap-5'>
                                                 <div className='w-auto h-auto'>
                                                     <img src={dept.icon} alt="department-icn" />
                                                 </div>
