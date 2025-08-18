@@ -3,7 +3,7 @@ import { Card, CardContent, CardTitle } from '@/components/ui/card';
 import { PlaceholderPattern } from '@/components/ui/placeholder-pattern';
 import { Progress } from '@/components/ui/progress';
 import AppLayout from '@/layouts/app-layout';
-import { type DashboardCard, type BreadcrumbItem } from '@/types';
+import { type DashboardCard, type BreadcrumbItem, type DepartmentCard } from '@/types';
 import { Head } from '@inertiajs/react';
 import { User as UserIcon } from 'lucide-react';
 
@@ -50,7 +50,28 @@ const dashboardCardData: DashboardCard[] = [
     },
 ];
 
-
+const departmentCard: DepartmentCard[] = [
+    {
+        title: 'Software Team',
+        employees: 12,
+        icon: 'images/ios.png'
+    },
+    {
+        title: 'Sales Executive Team',
+        employees: 50,
+        icon: 'images/spotify.png'
+    },
+    {
+        title: 'Auto Trading Team',
+        employees: 30,
+        icon: 'images/ios.png'
+    },
+    {
+        title: 'Eht-e-Salat',
+        employees: 10,
+        icon: 'images/behance.png'
+    },
+]
 
 export default function Dashboard() {
     return (
@@ -88,8 +109,22 @@ export default function Dashboard() {
                     <div className='col-span-1 bg-primary/5 rounded-xl size-full'>
                         <Card className='bg-transparent shadow-none border-0'>
                             <CardContent>
-                                <h2 className='font-medium text-xl'>Department</h2>
-                                <div className=''></div>
+                                <h2 className='font-medium text-xl mb-4'>Department</h2>
+                                <div className='flex flex-col w-full h-auto gap-3'>
+                                    {
+                                        departmentCard && departmentCard.map((dept, index) => (
+                                            <div className='rounded-xl w-full bg-accent h-auto p-4 flex items-center gap-3'>
+                                                <div className='w-auto h-auto'>
+                                                    <img src={dept.icon} alt="department-icn" />
+                                                </div>
+                                                <div className='flex flex-col gap-2'>
+                                                    <h2 className='text-primary text-2xl font-semibold'>{dept.title}</h2>
+                                                    <p className='text-primary/50 text-sm font-semibold'>{dept.employees} employees</p>
+                                                </div>
+                                            </div>
+                                        ))
+                                    }
+                                </div>
                             </CardContent>
                         </Card>
                     </div>
