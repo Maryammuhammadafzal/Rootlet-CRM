@@ -15,11 +15,16 @@ export interface NavGroup {
     items: NavItem[];
 }
 
-export interface NavItem {
+export interface NavSubItem {
     title: string;
     href: string;
     icon?: LucideIcon | null;
     isActive?: boolean;
+}
+
+export interface NavItem {
+    navName: string;
+    navItems: NavSubItem[]; // array of sub-items
 }
 
 export interface SharedData {
@@ -40,4 +45,13 @@ export interface User {
     created_at: string;
     updated_at: string;
     [key: string]: unknown; // This allows for additional properties...
+}
+
+export interface DashboardCard {
+    title: string;
+    progress: number;
+    count: number;
+    icon?:  LucideIcon | null;
+    description: string;
+    color: string
 }
