@@ -22,9 +22,10 @@ export function CardProgress() {
       data={chartData}
       startAngle={0}
       endAngle={74+180}
+      className=""
     >
       {/* Arc */}
-      <RadialBar dataKey="value" cornerRadius={10} />
+      <RadialBar dataKey="value" cornerRadius={10}  />
 
       {/* Optional faint background circle */}
       <PolarGrid
@@ -46,11 +47,12 @@ export function CardProgress() {
                   y={viewBox.cy}
                   textAnchor="middle"
                   dominantBaseline="middle"
+                  className="bg-accent-foreground fill-bg-accent/20"
                 >
                   <tspan
                     x={viewBox.cx}
                     y={viewBox.cy}
-                    className="fill-accent text-lg font-bold"
+                    className="fill-white text-lg font-bold"
                   >
                     {chartData[0].value.toLocaleString()}%
                   </tspan>

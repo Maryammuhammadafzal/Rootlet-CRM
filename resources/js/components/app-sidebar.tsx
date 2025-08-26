@@ -96,11 +96,11 @@ const mainNavItems: NavItem[] = [
 export function AppSidebar() {
     return (
         <Sidebar collapsible="icon" variant="inset">
-            <SidebarHeader className='mb-14'>
+            <SidebarHeader className='mb-10'>
                 <SidebarMenu>
                     <SidebarMenuItem>
                         <SidebarMenuButton size="lg" asChild>
-                            <Link href="/dashboard" prefetch className='w-[200px] p-4 h-[80px]'>
+                            <Link href="/dashboard" prefetch className='w-[180px] p-4 h-[80px]'>
                                 <AppLogo />
                             </Link>
                         </SidebarMenuButton>

@@ -11,13 +11,18 @@ export function AppSidebarHeader({ breadcrumbs = [] }: { breadcrumbs?: Breadcrum
     const userImage = null;
 
     const handleTheme = () => {
-        setIsChecked(!isChecked);
-
-        if (isChecked) {
+        if (!isChecked) {
+            setIsChecked(true);
             document.documentElement.classList.add('dark');
+            localStorage.setItem('theme' , 'dark');
         } else {
+            setIsChecked(false);
             document.documentElement.classList.remove('dark');
+            localStorage.removeItem('theme');
         }
+
+        console.log(isChecked , localStorage.getItem('theme'));
+        
     }
     return (
         <header className="flex h-20 shrink-0 items-center justify-between gap-2 border-b border-sidebar-border/50 px-6 transition-[width,height] ease-linear group-has-data-[collapsible=icon]/sidebar-wrapper:h-12 md:px-4">
@@ -28,9 +33,9 @@ export function AppSidebarHeader({ breadcrumbs = [] }: { breadcrumbs?: Breadcrum
             </div>
             <div className='flex gap-6 items-center'>
                 <div className="search w-[250px] flex items-center relative h-fit mr-4">
-                    <Input type='search' placeholder='Search by anything' className='h-10' />
-                    <div className='text-accent bg-foreground w-10 h-10 flex justify-center items-center rounded-tr-lg rounded-br-lg absolute right-0 top-0'>
-                        <Search />
+                    <Input type='search' placeholder='Search by anything' className='h-10 border border-accent' />
+                    <div className='text-white bg-foreground w-10 h-10 flex justify-center items-center rounded-tr-lg rounded-br-lg absolute right-0 top-0'>
+                        <Search  />
                     </div>
                 </div>
 

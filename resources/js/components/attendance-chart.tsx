@@ -114,27 +114,45 @@ const chartConfig = {
 // } satisfies ChartConfig
 
 export function AttendanceChart() {
-   const [isChecked, setIsChecked] = useState<'Days' | 'Month' | 'Year'>('Month')
-const [chartData, setChartData] = useState<any>(monthsArray) // default chart data
+    const [isChecked, setIsChecked] = useState<'Days' | 'Month' | 'Year'>('Month');
+    // const [isDark, setIsDark] = useState(false);
+    // const [stroke, setStroke] = useState('#fff');
+    const [chartData, setChartData] = useState<any>(monthsArray) // default chart data
 
-const handleChecked = (value: 'Days' | 'Month' | 'Year') => {
-  setIsChecked(value)
+    // Change Theme
+    // useEffect(() => {
+    //     // const theme = localStorage.getItem('theme');
+    //     if (window.localStorage.getItem('theme') === 'dark') {
+    //         setIsDark(true);
+    //         setStroke('#333333');
+    //     } else {
+    //         setIsDark(false)
+    //         setStroke('#fff');
+    //     }
+    // }, [isDark]);
 
-  if (value === 'Days') {
-    setChartData(daysArray)
-    console.log(chartData);
-    
-  } else if (value === 'Month') {
-    setChartData(monthsArray)
-  } else if (value === 'Year') {
-    setChartData(yearsArray)
-  }
-}
+
+    const handleChecked = (value: 'Days' | 'Month' | 'Year') => {
+        setIsChecked(value);
+
+        if (value === 'Days') {
+            window.location.reload();
+            setChartData(daysArray)
+            console.log(chartData);
+
+        } else if (value === 'Month') {
+             window.location.reload();
+            setChartData(monthsArray)
+        } else if (value === 'Year') {
+            window.location.reload();
+            setChartData(yearsArray)
+        }
+    }
 
     return (
         <>
             {isChecked === 'Days' && (
-                <Card className="bg-transparent shadow-none border-0">
+                <Card className="bg-card shadow-none border-0 ">
                     <CardHeader className="flex justify-between gap-4">
                         <h2 className='font-medium text-xl mb-4'>Attendance Overview</h2>
                         {/* Switches */}
@@ -142,18 +160,18 @@ const handleChecked = (value: 'Days' | 'Month' | 'Year') => {
                             <div className="flex gap-2">
                                 {/* Present Switch */}
                                 <div className="flex items-center space-x-2">
-                                    <Switch id="present" className={`bg-[${chartConfig.present.color}] data-[state=checked]:bg-[${chartConfig.present.color}] `} />
-                                    <Label htmlFor="present" className="font-text-xs">{chartConfig.present.label}</Label>
+                                    <Switch id="day-present" aria-checked='true' className={`bg-[${chartConfig.present.color}] data-[state=checked]:bg-[${chartConfig.present.color}] `} />
+                                    <Label htmlFor="day-present" className="font-text-xs">{chartConfig.present.label}</Label>
                                 </div>
                                 {/* Half day Switch */}
                                 <div className="flex items-center space-x-2">
-                                    <Switch id="halfday" className={`bg-[${chartConfig.halfday.color}] data-[state=checked]:bg-[${chartConfig.halfday.color}] `} />
-                                    <Label htmlFor="halfday" className="font-text-xs">{chartConfig.halfday.label}</Label>
+                                    <Switch id="day-halfday" className={`bg-[${chartConfig.halfday.color}] data-[state=checked]:bg-[${chartConfig.halfday.color}] `} />
+                                    <Label htmlFor="day-halfday" className="font-text-xs">{chartConfig.halfday.label}</Label>
                                 </div>
                                 {/* Absent Switch */}
                                 <div className="flex items-center space-x-2">
-                                    <Switch id="absent" className={`bg-[${chartConfig.absent.color}] data-[state=checked]:bg-[${chartConfig.absent.color}] `} />
-                                    <Label htmlFor="absent" className="font-text-xs">{chartConfig.absent.label}</Label>
+                                    <Switch id="day-absent" className={`bg-[${chartConfig.absent.color}] data-[state=checked]:bg-[${chartConfig.absent.color}] `} />
+                                    <Label htmlFor="day-absent" className="font-text-xs">{chartConfig.absent.label}</Label>
                                 </div>
                             </div>
                         </div>
@@ -164,9 +182,9 @@ const handleChecked = (value: 'Days' | 'Month' | 'Year') => {
                                     <SelectValue placeholder="Select" defaultValue={'Days'} />
                                 </SelectTrigger>
                                 <SelectContent>
-                                    <SelectItem onClick={() =>handleChecked('Days')} value="Days">Days</SelectItem>
+                                    <SelectItem onClick={() => handleChecked('Days')} value="Days">Days</SelectItem>
                                     <SelectItem onClick={() => handleChecked('Month')} value="Month">Month</SelectItem>
-                                    <SelectItem onClick={() =>handleChecked('Year')} value="Year">Year</SelectItem>
+                                    <SelectItem onClick={() => handleChecked('Year')} value="Year">Year</SelectItem>
                                 </SelectContent>
                             </Select>
                         </div>
@@ -195,21 +213,22 @@ const handleChecked = (value: 'Days' | 'Month' | 'Year') => {
 
                                 <Bar dataKey="present"
                                     barSize={10}
+                                    className="stroke"
                                     stackId="a"
                                     fill={chartConfig.present.color}
                                     radius={[4, 4, 4, 4]}
-                                    stroke="#fff"
                                     strokeWidth={3} />
-                                <Bar dataKey="halfday" barSize={10} stackId="a" fill={chartConfig.halfday.color} radius={[4, 4, 4, 4]} stroke="#fff"
+                                <Bar dataKey="halfday" barSize={10}
+                                className="stroke" stackId="a" fill={chartConfig.halfday.color} radius={[4, 4, 4, 4]}
                                     strokeWidth={3} />
-                                <Bar dataKey="absent" barSize={8} stackId="a" fill={chartConfig.absent.color} radius={[4, 4, 4, 4]} stroke="#fff"
+                                <Bar dataKey="absent" className="stroke" barSize={8} stackId="a" fill={chartConfig.absent.color} radius={[4, 4, 4, 4]}
                                     strokeWidth={3} />
                             </BarChart>
                         </ChartContainer>
                     </CardContent>
                 </Card>
             ) || isChecked === 'Month' && (
-                <Card className="bg-transparent shadow-none border-0">
+                <Card className="bg-card shadow-none border-0">
                     <CardHeader className="flex justify-between gap-4">
                         <h2 className='font-medium text-xl mb-4'>Attendance Overview</h2>
                         {/* Switches */}
@@ -217,18 +236,18 @@ const handleChecked = (value: 'Days' | 'Month' | 'Year') => {
                             <div className="flex gap-2">
                                 {/* Present Switch */}
                                 <div className="flex items-center space-x-2">
-                                    <Switch id="present" className={`bg-[${chartConfig.present.color}] data-[state=checked]:bg-[${chartConfig.present.color}] `} />
-                                    <Label htmlFor="present" className="font-text-xs">{chartConfig.present.label}</Label>
+                                    <Switch id="month-present" aria-checked='true' className={`bg-[${chartConfig.present.color}] data-[state=checked]:bg-[${chartConfig.present.color}] `} />
+                                    <Label htmlFor="month-present" className="font-text-xs">{chartConfig.present.label}</Label>
                                 </div>
                                 {/* Half day Switch */}
                                 <div className="flex items-center space-x-2">
-                                    <Switch id="halfday" className={`bg-[${chartConfig.halfday.color}] data-[state=checked]:bg-[${chartConfig.halfday.color}] `} />
-                                    <Label htmlFor="halfday" className="font-text-xs">{chartConfig.halfday.label}</Label>
+                                    <Switch id="month-halfday" className={`bg-[${chartConfig.halfday.color}] data-[state=checked]:bg-[${chartConfig.halfday.color}] `} />
+                                    <Label htmlFor="month-halfday" className="font-text-xs">{chartConfig.halfday.label}</Label>
                                 </div>
                                 {/* Absent Switch */}
                                 <div className="flex items-center space-x-2">
-                                    <Switch id="absent" className={`bg-[${chartConfig.absent.color}] data-[state=checked]:bg-[${chartConfig.absent.color}] `} />
-                                    <Label htmlFor="absent" className="font-text-xs">{chartConfig.absent.label}</Label>
+                                    <Switch id="month-absent" className={`bg-[${chartConfig.absent.color}] data-[state=checked]:bg-[${chartConfig.absent.color}] `} />
+                                    <Label htmlFor="month-absent" className="font-text-xs">{chartConfig.absent.label}</Label>
                                 </div>
                             </div>
                         </div>
@@ -239,9 +258,9 @@ const handleChecked = (value: 'Days' | 'Month' | 'Year') => {
                                     <SelectValue placeholder="Select" />
                                 </SelectTrigger>
                                 <SelectContent>
-                                    <SelectItem onClick={() =>handleChecked('Days')} value="Days">Days</SelectItem>
-                                    <SelectItem onClick={()=>handleChecked('Month')} value="Month">Month</SelectItem>
-                                    <SelectItem onClick={()=>handleChecked('Year')} value="Year">Year</SelectItem>
+                                    <SelectItem onClick={() => handleChecked('Days')} value="Days">Days</SelectItem>
+                                    <SelectItem onClick={() => handleChecked('Month')} value="Month">Month</SelectItem>
+                                    <SelectItem onClick={() => handleChecked('Year')} value="Year">Year</SelectItem>
                                 </SelectContent>
                             </Select>
                         </div>
@@ -270,21 +289,23 @@ const handleChecked = (value: 'Days' | 'Month' | 'Year') => {
 
                                 <Bar dataKey="present"
                                     barSize={10}
+                                    className="stroke"
                                     stackId="a"
                                     fill={chartConfig.present.color}
                                     radius={[4, 4, 4, 4]}
-                                    stroke="#fff"
+                                   
                                     strokeWidth={3} />
-                                <Bar dataKey="halfday" barSize={10} stackId="a" fill={chartConfig.halfday.color} radius={[4, 4, 4, 4]} stroke="#fff"
+                                <Bar dataKey="halfday" barSize={10}
+                                className="stroke" stackId="a" fill={chartConfig.halfday.color} radius={[4, 4, 4, 4]}
                                     strokeWidth={3} />
-                                <Bar dataKey="absent" barSize={8} stackId="a" fill={chartConfig.absent.color} radius={[4, 4, 4, 4]} stroke="#fff"
+                                <Bar dataKey="absent"  className="stroke" barSize={8} stackId="a" fill={chartConfig.absent.color} radius={[4, 4, 4, 4]}
                                     strokeWidth={3} />
                             </BarChart>
                         </ChartContainer>
                     </CardContent>
                 </Card>
             ) || isChecked === 'Year' && (
-                <Card className="bg-transparent shadow-none border-0">
+                <Card className="bg-card shadow-none border-0">
                     <CardHeader className="flex justify-between gap-4">
                         <h2 className='font-medium text-xl mb-4'>Attendance Overview</h2>
                         {/* Switches */}
@@ -292,18 +313,18 @@ const handleChecked = (value: 'Days' | 'Month' | 'Year') => {
                             <div className="flex gap-2">
                                 {/* Present Switch */}
                                 <div className="flex items-center space-x-2">
-                                    <Switch id="present" className={`bg-[${chartConfig.present.color}] data-[state=checked]:bg-[${chartConfig.present.color}] `} />
-                                    <Label htmlFor="present" className="font-text-xs">{chartConfig.present.label}</Label>
+                                    <Switch id="year-present" aria-checked='true' className={`bg-[${chartConfig.present.color}] data-[state=checked]:bg-[${chartConfig.present.color}] `} />
+                                    <Label htmlFor="year-present" className="font-text-xs">{chartConfig.present.label}</Label>
                                 </div>
                                 {/* Half day Switch */}
                                 <div className="flex items-center space-x-2">
-                                    <Switch id="halfday" className={`bg-[${chartConfig.halfday.color}] data-[state=checked]:bg-[${chartConfig.halfday.color}] `} />
-                                    <Label htmlFor="halfday" className="font-text-xs">{chartConfig.halfday.label}</Label>
+                                    <Switch id="year-halfday" className={`bg-[${chartConfig.halfday.color}] data-[state=checked]:bg-[${chartConfig.halfday.color}] `} />
+                                    <Label htmlFor="year-halfday" className="font-text-xs">{chartConfig.halfday.label}</Label>
                                 </div>
                                 {/* Absent Switch */}
                                 <div className="flex items-center space-x-2">
-                                    <Switch id="absent" className={`bg-[${chartConfig.absent.color}] data-[state=checked]:bg-[${chartConfig.absent.color}] `} />
-                                    <Label htmlFor="absent" className="font-text-xs">{chartConfig.absent.label}</Label>
+                                    <Switch id="year-absent" className={`bg-[${chartConfig.absent.color}] data-[state=checked]:bg-[${chartConfig.absent.color}] `} />
+                                    <Label htmlFor="year-absent" className="font-text-xs">{chartConfig.absent.label}</Label>
                                 </div>
                             </div>
                         </div>
@@ -314,9 +335,9 @@ const handleChecked = (value: 'Days' | 'Month' | 'Year') => {
                                     <SelectValue placeholder="Select" />
                                 </SelectTrigger>
                                 <SelectContent>
-                                    <SelectItem onClick={() =>handleChecked('Days')} value="Days">Days</SelectItem>
-                                    <SelectItem onClick={()=>handleChecked('Month')} value="Month">Month</SelectItem>
-                                    <SelectItem onClick={()=>handleChecked('Year')} value="Year">Year</SelectItem>
+                                    <SelectItem onClick={() => handleChecked('Days')} value="Days">Days</SelectItem>
+                                    <SelectItem onClick={() => handleChecked('Month')} value="Month">Month</SelectItem>
+                                    <SelectItem onClick={() => handleChecked('Year')} value="Year">Year</SelectItem>
                                 </SelectContent>
                             </Select>
                         </div>
@@ -345,14 +366,16 @@ const handleChecked = (value: 'Days' | 'Month' | 'Year') => {
 
                                 <Bar dataKey="present"
                                     barSize={10}
+                                    className="stroke"
                                     stackId="a"
                                     fill={chartConfig.present.color}
                                     radius={[4, 4, 4, 4]}
-                                    stroke="#fff"
+                                   
                                     strokeWidth={3} />
-                                <Bar dataKey="halfday" barSize={10} stackId="a" fill={chartConfig.halfday.color} radius={[4, 4, 4, 4]} stroke="#fff"
+                                <Bar dataKey="halfday" barSize={10}
+                                className="stroke" stackId="a" fill={chartConfig.halfday.color} radius={[4, 4, 4, 4]}
                                     strokeWidth={3} />
-                                <Bar dataKey="absent" barSize={8} stackId="a" fill={chartConfig.absent.color} radius={[4, 4, 4, 4]} stroke="#fff"
+                                <Bar dataKey="absent"  className="stroke" barSize={8} stackId="a" fill={chartConfig.absent.color} radius={[4, 4, 4, 4]}
                                     strokeWidth={3} />
                             </BarChart>
                         </ChartContainer>

@@ -53,10 +53,11 @@ export interface DashboardCard {
     count: number;
     icon?: LucideIcon | null;
     description: string;
+    card_design: string;
     color: string;
 }
 export interface DepartmentCard {
     title: string;
     employees: number;
-    icon?: string;
+    icon?: LucideIcon | string;
 }
