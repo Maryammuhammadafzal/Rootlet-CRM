@@ -116,19 +116,25 @@ const ActivityFeed = () => {
                 </div>
             </CardHeader>
 
-            <CardContent className='space-y-4'>
+            <CardContent className='space-y-6'>
                 {activityFeeds.map((activity, i) => (
                     <div className='flex justify-between items-center h-auto w-full'>
                         {/* Left Content */}
                         <div className='flex gap-2'>
                             <img src={activity.avatar} alt={activity.name} className='w-9 h-8 rounded-full' />
                             <div className='flex flex-col justify-center gap-1'>
-                                <p className='text-sm'> <span className='text-base font-medium'>{activity.name}</span> {activity.type === 'leave' && 'applied for the leave'} <span className='font-medium text-base'> {activity.designation} </span> </p>
-                                <p className='text-xs text-primary/50'>{getTime(activity?.time)}</p>
+                                <p className='text-sm text-primary/80'> <span className='text-base font-medium text-primary capitalize'>{activity.name}</span> {activity.type === 'leave' && 'applied for the leave'} <span className='font-medium text-base text-primary'> {activity.designation} </span> </p>
+                                <p className='text-[10px] text-primary/50'>{getTime(activity?.time)}</p>
                             </div>
                         </div>
                         {/* Right Button */}
-                        <Button className={`bg-green-200 px-3 py-1`}>{activity.activity}</Button>
+                        {activity.activity === 'apply' ?
+                            (
+                                <Button className={`bg-[#377DFF33] text-[#377DFF] rounded-md text-sm px-4 py-1.5`}>Applying</Button>
+                            ) : (
+                                <Button className={`bg-[#38CB8933] text-[#38CB89] rounded-md text-sm px-4 py-1.5`}>Message</Button>
+                            )
+                        }
                     </div>
                 ))}
             </CardContent>
