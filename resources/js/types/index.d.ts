@@ -61,3 +61,14 @@ export interface DepartmentCard {
     employees: number;
     icon?: LucideIcon | string;
 }
+
+export interface ActivityFeeds {
+    avatar?: string;
+    name: string;
+    message: string;
+    time: string;
+    type: string;
+    activity: string;
+    depart: string;
+    position: string;
+}

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Card, CardHeader } from './ui/card'
+import { Card, CardContent, CardHeader } from './ui/card'
 import {
     Select,
     SelectContent,
@@ -7,8 +7,23 @@ import {
     SelectTrigger,
     SelectValue,
 } from "@/components/ui/select"
+import { Button } from '@headlessui/react'
+import { ActivityFeeds } from '@/types'
 const ActivityFeed = () => {
     const [isChecked, setIsChecked] = useState<'all' | 'apply' | 'message'>()
+
+    const activityFeeds: ActivityFeeds[] = [
+        {
+            avatar: '/images/avatar.png',
+            type: 'leave',
+            name: 'username',
+            time: Date.now.toString(),
+            message: 'new message',
+            activity: 'apply',
+            depart: 'software',
+            position: 'Product Designer'
+        },
+    ]
 
     const handleActiviyChecked = (value: string) => {
 
@@ -27,11 +42,11 @@ const ActivityFeed = () => {
         <Card className='bg-transparent shadow-none border-0'>
             <CardHeader className='w-ful flex justify-between'>
                 <h2 className='font-medium text-xl mb-4'>Activity Feeds</h2>
-                {/* Mothly Selection */}
+                {/* Activity States Selection */}
                 <div className="">
                     <Select>
-                        <SelectTrigger className="w-[90px]">
-                            <SelectValue placeholder="Select" defaultValue={'Days'} />
+                        <SelectTrigger className="w-[120px]">
+                            <SelectValue placeholder="All activity" defaultValue={'All activity'} />
                         </SelectTrigger>
                         <SelectContent>
                             <SelectItem onClick={() => handleActiviyChecked('all')} value="all">All activity</SelectItem>
@@ -41,6 +56,19 @@ const ActivityFeed = () => {
                     </Select>
                 </div>
             </CardHeader>
+
+            <CardContent className=''>
+                {Array(5).map((_, i) => (
+                    <div className='flex justify-between items-center h-auto w-full'>
+                        {/* Left Content */}
+                        <div className='flex gap-2'>
+
+                        </div>
+                        {/* Right Button */}
+                        <Button></Button>
+                    </div>
+                ))}
+            </CardContent>
         </Card>
     )
 }
