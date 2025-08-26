@@ -64,11 +64,15 @@ export interface DepartmentCard {
 
 export interface ActivityFeeds {
     avatar?: string;
+    type: string;
     name: string;
     message: string;
+    reason: string;
     time: string;
-    type: string;
     activity: string;
     depart: string;
-    position: string;
+    designation: string;
+    status: string;
+    reply: string;
+
 }

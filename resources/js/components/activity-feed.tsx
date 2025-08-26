@@ -14,16 +14,75 @@ const ActivityFeed = () => {
 
     const activityFeeds: ActivityFeeds[] = [
         {
-            avatar: '/images/avatar.png',
+            avatar: '/images/user-avatar.png',
             type: 'leave',
             name: 'username',
-            time: Date.now.toString(),
+            time: 'Tue Aug 26 2025 16:22:53 GMT+0500 (Pakistan Standard Time)',
             message: 'new message',
+            reason: 'user Reason',
             activity: 'apply',
             depart: 'software',
-            position: 'Product Designer'
+            designation: 'Product Designer',
+            status: 'pending',
+            reply: ''
         },
-    ]
+        {
+            avatar: '/images/user-avatar.png',
+            type: 'leave',
+            name: 'username',
+            time: 'Tue Aug 26 2025 16:22:53 GMT+0500 (Pakistan Standard Time)',
+            message: 'new message',
+            reason: 'user Reason',
+            activity: 'apply',
+            depart: 'software',
+            designation: 'Product Designer',
+            status: 'pending',
+            reply: ''
+        },
+        {
+            avatar: '/images/user-avatar.png',
+            type: 'leave',
+            name: 'username',
+            time: 'Tue Aug 26 2025 16:22:53 GMT+0500 (Pakistan Standard Time)',
+            message: 'new message',
+            reason: 'user Reason',
+            activity: 'apply',
+            depart: 'software',
+            designation: 'Product Designer',
+            status: 'pending',
+            reply: ''
+        },
+    ];
+    const getTime = (value: string | undefined) => {
+
+        if (value !== undefined) {
+            const time = new Date('Tue Aug 26 2025 16:22:53 GMT+0500');
+            const now = new Date();
+            const diffInMs = now - time;
+
+            // Convert milliseconds to seconds
+            const diffInSeconds = Math.floor(diffInMs / 1000);
+
+            let formattedDiff;
+            if (diffInSeconds < 60) {
+                formattedDiff = `${diffInSeconds} sec${diffInSeconds !== 1 ? 's' : ''} ago`;
+            } else {
+                const diffInMinutes = Math.floor(diffInSeconds / 60);
+                if (diffInMinutes < 60) {
+                    formattedDiff = `${diffInMinutes} min${diffInMinutes !== 1 ? 's' : ''} ago`;
+                } else {
+                    const diffInHours = Math.floor(diffInMinutes / 60);
+                    formattedDiff = `${diffInHours} hour${diffInHours !== 1 ? 's' : ''} ago`;
+                }
+            }
+            return formattedDiff;
+        } else {
+            console.log('Time not given');
+
+        }
+    }
+
+
 
     const handleActiviyChecked = (value: string) => {
 
@@ -57,15 +116,19 @@ const ActivityFeed = () => {
                 </div>
             </CardHeader>
 
-            <CardContent className=''>
-                {Array(5).map((_, i) => (
+            <CardContent className='space-y-4'>
+                {activityFeeds.map((activity, i) => (
                     <div className='flex justify-between items-center h-auto w-full'>
                         {/* Left Content */}
                         <div className='flex gap-2'>
-
+                            <img src={activity.avatar} alt={activity.name} className='w-9 h-8 rounded-full' />
+                            <div className='flex flex-col justify-center gap-1'>
+                                <p className='text-sm'> <span className='text-base font-medium'>{activity.name}</span> {activity.type === 'leave' && 'applied for the leave'} <span className='font-medium text-base'> {activity.designation} </span> </p>
+                                <p className='text-xs text-primary/50'>{getTime(activity?.time)}</p>
+                            </div>
                         </div>
                         {/* Right Button */}
-                        <Button></Button>
+                        <Button className={`bg-green-200 px-3 py-1`}>{activity.activity}</Button>
                     </div>
                 ))}
             </CardContent>
