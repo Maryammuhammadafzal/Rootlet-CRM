@@ -1,5 +1,7 @@
+import ActivityFeed from '@/components/activity-feed';
 import { AttendanceChart } from '@/components/attendance-chart';
 import { CardProgress } from '@/components/card-progress';
+import MeetingCard from '@/components/meetings';
 import { Card, CardContent, CardTitle } from '@/components/ui/card';
 import { PlaceholderPattern } from '@/components/ui/placeholder-pattern';
 import { Progress } from '@/components/ui/progress';
@@ -136,31 +138,13 @@ export default function Dashboard() {
                 </div>
 
                 <div className="relative h-auto flex-1 overflow-hidden rounded-xl gap-5  md:min-h-min grid lg:grid-cols-2 grid-cols-1">
+                    {/* Activity Feeds */}
                     <div className='h-auto col-span-1 bg-primary/5 rounded-xl '>
-                        <AttendanceChart />
+                        <ActivityFeed />
                     </div>
-                    {/* Department */}
+                    {/* Meetings */}
                     <div className='col-span-1 h-auto bg-primary/5 rounded-xl '>
-                        <Card className='bg-card shadow-none border-0'>
-                            <CardContent>
-                                <h2 className='font-medium text-xl mb-4'>Department</h2>
-                                <div className='flex flex-col w-full h-auto gap-4'>
-                                    {
-                                        departmentCard && departmentCard.map((dept, index) => (
-                                            <div key={index} className='rounded-xl w-full bg-primary/10 h-auto p-3 flex items-center gap-5'>
-                                                <div className='w-10 h-10 flex justify-center items-center bg-accent rounded-full p-1'>
-                                                    {dept.icon && <dept.icon className="w-6 h-6  my-2" />}
-                                                </div>
-                                                <div className='flex flex-col'>
-                                                    <h2 className='text-primary font-medium'>{dept.title}</h2>
-                                                    <p className='text-primary/50 text-sm'>{dept.employees} employees</p>
-                                                </div>
-                                            </div>
-                                        ))
-                                    }
-                                </div>
-                            </CardContent>
-                        </Card>
+                        <MeetingCard />
                     </div>
                 </div>
             </div>
