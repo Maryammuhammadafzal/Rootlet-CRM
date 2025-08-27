@@ -58,6 +58,51 @@ const ActivityFeed = () => {
             reply: '',
             created_at: Date.now().toString()
         },
+        {
+            id: Date.now().toString(),
+            avatar: '/images/user-avatar.png',
+            type: 'leave',
+            name: 'username',
+            time: 'Tue Aug 26 2025 16:22:53 GMT+0500 (Pakistan Standard Time)',
+            message: 'new message',
+            reason: 'user Reason',
+            activity: 'apply',
+            depart: 'software',
+            designation: 'Product Designer',
+            status: 'pending',
+            reply: '',
+            created_at: Date.now().toString()
+        },
+        {
+            id: Date.now().toString(),
+            avatar: '/images/user-avatar.png',
+            type: 'leave',
+            name: 'username',
+            time: 'Tue Aug 26 2025 16:22:53 GMT+0500 (Pakistan Standard Time)',
+            message: 'new message',
+            reason: 'user Reason',
+            activity: 'apply',
+            depart: 'software',
+            designation: 'Product Designer',
+            status: 'pending',
+            reply: '',
+            created_at: Date.now().toString()
+        },
+        {
+            id: Date.now().toString(),
+            avatar: '/images/user-avatar.png',
+            type: 'leave',
+            name: 'username',
+            time: 'Tue Aug 26 2025 16:22:53 GMT+0500 (Pakistan Standard Time)',
+            message: 'new message',
+            reason: 'user Reason',
+            activity: 'apply',
+            depart: 'software',
+            designation: 'Product Designer',
+            status: 'pending',
+            reply: '',
+            created_at: Date.now().toString()
+        },
     ];
     const getTime = (value: string | undefined) => {
 

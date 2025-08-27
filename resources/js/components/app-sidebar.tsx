@@ -17,8 +17,8 @@ const mainNavItems: NavItem[] = [
                 icon: LayoutGrid,
             },
             {
-                title: 'Message',
-                href: '/message',
+                title: 'Messages',
+                href: '/messages',
                 icon: MessageSquareText,
             },
             {

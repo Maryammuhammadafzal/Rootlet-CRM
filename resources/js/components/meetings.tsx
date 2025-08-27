@@ -63,6 +63,51 @@ const MeetingCard = () => {
             new_end_time: '', // New Start Time after postpond
             created_at: Date.now.toString()
         },
+        {
+            id: 1,
+            title: 'Interview', // Interview | Meeting with manager
+            date: 'Tue Aug 26 2025 16:22:53 GMT+0500', // Thu 30
+            start_time: new Date('Tue Aug 26 2025 16:22:53 GMT+0500').toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }), // 9 : 30 am
+            end_time: new Date('Tue Aug 26 2025 16:22:53 GMT+0500').toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }), // 11 : 00 pm
+            description: '', // Interview for hiring a new Web developer
+            status: 'pending', // pending | attended | postpond | cancelled
+            post_reason: '', // The interview is Postpond due to ...
+            cancel_reason: '', // The interview is Cancelled due to ...
+            new_date: '', // New Date after postpond
+            new_start_time: '', // New Start Time after postpond
+            new_end_time: '', // New Start Time after postpond
+            created_at: Date.now.toString()
+        },
+        {
+            id: 1,
+            title: 'Interview', // Interview | Meeting with manager
+            date: new Date('Tue Aug 26 2025 16:22:53 GMT+0500').toString().slice(0, 3) + new Date('Tue Aug 26 2025 16:22:53 GMT+0500').toString().slice(8, 11), // Thu 30
+            start_time: new Date('Tue Aug 26 2025 16:22:53 GMT+0500').toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }), // 9 : 30 am
+            end_time: new Date('Tue Aug 26 2025 16:22:53 GMT+0500').toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }), // 11 : 00 pm
+            description: '', // Interview for hiring a new Web developer
+            status: 'pending', // pending | attended | postpond | cancelled
+            post_reason: '', // The interview is Postpond due to ...
+            cancel_reason: '', // The interview is Cancelled due to ...
+            new_date: '', // New Date after postpond
+            new_start_time: '', // New Start Time after postpond
+            new_end_time: '', // New Start Time after postpond
+            created_at: Date.now.toString()
+        },
+        {
+            id: 1,
+            title: 'Interview', // Interview | Meeting with manager
+            date: new Date('Tue Aug 26 2025 16:22:53 GMT+0500').toString().slice(0, 3) + new Date('Tue Aug 26 2025 16:22:53 GMT+0500').toString().slice(8, 11), // Thu 30
+            start_time: new Date('Tue Aug 26 2025 16:22:53 GMT+0500').toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }), // 9 : 30 am
+            end_time: new Date('Tue Aug 26 2025 16:22:53 GMT+0500').toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }), // 11 : 00 pm
+            description: '', // Interview for hiring a new Web developer
+            status: 'pending', // pending | attended | postpond | cancelled
+            post_reason: '', // The interview is Postpond due to ...
+            cancel_reason: '', // The interview is Cancelled due to ...
+            new_date: '', // New Date after postpond
+            new_start_time: '', // New Start Time after postpond
+            new_end_time: '', // New Start Time after postpond
+            created_at: Date.now.toString()
+        },
     ];
 
     useEffect(() => {

@@ -7,7 +7,7 @@ export function Breadcrumbs({ breadcrumbs }: { breadcrumbs: BreadcrumbItemType[]
     return (
         <>
             {breadcrumbs.length > 0 && (
-                <Breadcrumb>
+                <Breadcrumb cla>
                     <BreadcrumbList>
                         {breadcrumbs.map((item, index) => {
                             const isLast = index === breadcrumbs.length - 1;
@@ -15,7 +15,7 @@ export function Breadcrumbs({ breadcrumbs }: { breadcrumbs: BreadcrumbItemType[]
                                 <Fragment key={index}>
                                     <BreadcrumbItem>
                                         {isLast ? (
-                                            <BreadcrumbPage>{item.title}</BreadcrumbPage>
+                                            <BreadcrumbPage className='text-primary font-sans font-semibold text-2xl'>{item.title}</BreadcrumbPage>
                                         ) : (
                                             <BreadcrumbLink asChild>
                                                 <Link href={item.href}>{item.title}</Link>
