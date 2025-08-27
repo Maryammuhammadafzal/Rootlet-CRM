@@ -3,8 +3,6 @@ import { AttendanceChart } from '@/components/attendance-chart';
 import { CardProgress } from '@/components/card-progress';
 import MeetingCard from '@/components/meetings';
 import { Card, CardContent, CardTitle } from '@/components/ui/card';
-import { PlaceholderPattern } from '@/components/ui/placeholder-pattern';
-import { Progress } from '@/components/ui/progress';
 import AppLayout from '@/layouts/app-layout';
 import { type DashboardCard, type BreadcrumbItem, type DepartmentCard } from '@/types';
 import { Head } from '@inertiajs/react';
@@ -81,6 +79,7 @@ const departmentCard: DepartmentCard[] = [
 ]
 
 export default function Dashboard() {
+    
     return (
         <AppLayout breadcrumbs={breadcrumbs}>
             <Head title="Dashboard" />

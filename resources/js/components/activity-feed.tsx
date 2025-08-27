@@ -106,7 +106,7 @@ const ActivityFeed = () => {
     }
     return (
         <Card className='bg-transparent shadow-none border-0'>
-            <CardHeader className='w-ful flex justify-between'>
+            <CardHeader className='w-full flex justify-between'>
                 <h2 className='font-medium text-xl mb-4'>Activity Feeds</h2>
                 {/* Activity States Selection */}
                 <div className="">

@@ -2,10 +2,19 @@
 import React, { useEffect, useState } from 'react'
 import { Card, CardContent } from './ui/card'
 import { Meetings } from '@/types'
-import { Button } from './ui/button'
-import { EllipsisVertical } from 'lucide-react'
+import { Button } from "@/components/ui/button"
+import {
+    DropdownMenu,
+    DropdownMenuContent,
+    DropdownMenuItem,
+    DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
+import { EllipsisVertical, Plus } from 'lucide-react'
+import { useRoute } from 'vendor/tightenco/ziggy/src/js'
 const MeetingCard = () => {
     const [meetings, setMeetings] = useState<string[] | any>([]);
+    const [isDialogOpen, setIsDialogOpen] = useState(false);
+    const [meetingState, setMeetingState] = useState<'pending' | 'attended' | 'postpond' | 'cancelled'>('pending');
 
     // Fetch Meeting Data
     const meetingData: Meetings[] = [
@@ -58,42 +67,82 @@ const MeetingCard = () => {
 
     useEffect(() => {
         setMeetings(meetingData);
-    }, [meetingData]);
+    }, []);
+
+    // Handle Meeting State
+    const handleMeetingState = (state: string) => {
+        switch (state) {
+            case 'attended':
+                setMeetingState(state);
+                window.location.href = '/meetings';
+                break;
+            case 'postpond':
+                setMeetingState(state);
+                window.location.href = '/meetings';
+                break;
+            case 'cancelled':
+                setMeetingState(state);
+                window.location.href = '/meetings';
+                break;
+            default:
+                setMeetingState('pending');
+        }
+    };
+
 
     return (
-        <Card className='bg-card shadow-none border-0'>
-            <CardContent>
-                <h2 className='font-medium text-xl mb-4'>Department</h2>
-                <div className='flex flex-col w-full h-auto gap-6'>
-                    {
-                        meetings && meetings.map((meeting: any, index: number) => (
-                            <div key={index} className='flex justify-between items-center h-auto w-full'>
-                                {/* Left Content */}
-                                <div className='flex gap-2'>
-                                    <div className='w-[40px] flex-col p-2 h-[40px] bg-background rounded-lg text-center flex justify-center items-center '>
-                                        <p className='text-xs font-semibold text-[#FFA600]'>
-                                            {new Date(meeting.date).toString().slice(0, 3)}
-                                        </p>
-                                        <p className='text-xs text-primary/60'>
-                                            {new Date(meeting.date).toString().slice(8, 11)}
-                                        </p>
-                                    </div>
+        <>
+            {/* Card */}
+            <Card className='bg-card shadow-none border-0'>
+                <CardContent>
+                    <div className='w-ful flex justify-between'>
+                        <h2 className='font-medium text-xl mb-8'>Meetings</h2>
+                        <Button className='bg-card border border-primary/5 px-8 py-1 text-center text-primary'>
+                            <Plus className='h-4 w-4' /> Create New
+                        </Button>
+                    </div>
+                    <div className='flex flex-col w-full h-auto gap-6'>
+                        {meetings && meetings
+                            .map((meeting: any, index: number) => {
+                                return (
+                                    <div key={index} className='flex justify-between items-center h-auto w-full'>
+                                        {/* Left Content */}
+                                        <div className='flex gap-2'>
+                                            <div className='w-[40px] flex-col p-2 h-[40px] bg-background rounded-lg text-center flex justify-center items-center '>
+                                                <p className='text-xs font-semibold text-[#FFA600]'>
+                                                    {new Date(meeting.date).toString().slice(0, 3)}
+                                                </p>
+                                                <p className='text-xs text-primary/60'>
+                                                    {new Date(meeting.date).toString().slice(8, 11)}
+                                                </p>
+                                            </div>
 
-                                    <div className='flex flex-col justify-center gap-1'>
-                                        <h3 className='text-base text-primary'>{meeting.title}</h3>
-                                        <p className='text-[10px] text-primary/50'>{meeting.start_time} - {meeting.end_time}</p>
+                                            <div className='flex flex-col justify-center gap-1'>
+                                                <h3 className='text-base text-primary'>{meeting.title}</h3>
+                                                <p className='text-[10px] text-primary/50'>{meeting.start_time} - {meeting.end_time}</p>
+                                            </div>
+                                        </div>
+                                        {/* Right Button */}
+                                        <div className='w-6 h-6 m-2 '>
+                                            <DropdownMenu>
+                                                <DropdownMenuTrigger className='text-primary/70'><EllipsisVertical className='h-4 w-4' /></DropdownMenuTrigger>
+                                                <DropdownMenuContent>
+                                                    <DropdownMenuItem onClick={() => handleMeetingState('attended')}
+                                                    >Attended</DropdownMenuItem>
+                                                    <DropdownMenuItem onClick={() => handleMeetingState('postpond')}
+                                                    >Postpond</DropdownMenuItem>
+                                                    <DropdownMenuItem onClick={() => handleMeetingState('cancelled')}
+                                                    >Cancelled</DropdownMenuItem>
+                                                </DropdownMenuContent>
+                                            </DropdownMenu>
+                                        </div>
                                     </div>
-                                </div>
-                                {/* Right Button */}
-                               <div className='w-6 h-6 m-2 text-primary/70'>
-                                <EllipsisVertical className='h-4 w-4' />
-                               </div>
-                            </div>
-                        ))
-                    }
-                </div>
-            </CardContent>
-        </Card>
+                                )
+                            })}
+                    </div>
+                </CardContent>
+            </Card>
+        </>
     )
 }
 
