@@ -1,8 +1,18 @@
+'use client'
 import ActivityFeed from '@/components/activity-feed';
 import MeetingCard from '@/components/meetings';
 import AppLayout from '@/layouts/app-layout'
 import { BreadcrumbItem } from '@/types';
 import { Head } from '@inertiajs/react';
+import { useState } from 'react';
+import {
+    Dialog,
+    DialogContent,
+    DialogDescription,
+    DialogHeader,
+    DialogTitle,
+    DialogTrigger,
+} from "@/components/ui/dialog"
 
 const breadcrumbs: BreadcrumbItem[] = [
     {
@@ -11,6 +21,13 @@ const breadcrumbs: BreadcrumbItem[] = [
     },
 ];
 export default function Messages() {
+    const [isDialogOpen, setIsDialogOpen] = useState(false);
+    const [meetingState, setMeetingState] = useState('');
+
+    const handleMeetingDialog = (state: string) => {
+        setIsDialogOpen(true);
+        setMeetingState(state);
+    }
     return (
         <AppLayout breadcrumbs={breadcrumbs}>
             <Head title="Messages" />
@@ -21,8 +38,26 @@ export default function Messages() {
                 </div>
                 {/* Meetings */}
                 <div className='col-span-1 h-auto bg-primary/5 rounded-xl '>
-                    <MeetingCard />
+                    <MeetingCard onOpenDialog={handleMeetingDialog} />
                 </div>
+
+                {/* Meeting Dialog */}
+                {isDialogOpen && meetingState === 'postpond' ? (
+                    <Dialog>
+                        <DialogContent>
+                            <DialogHeader>
+                                <DialogTitle>Are you absolutely sure?</DialogTitle>
+                                <DialogDescription>
+                                    This action cannot be undone. This will permanently delete your account
+                                    and remove your data from our servers.
+                                </DialogDescription>
+                            </DialogHeader>
+                        </DialogContent>
+                    </Dialog>
+                ) :
+                    <>
+                    </>
+                }
             </div>
         </AppLayout>
     )

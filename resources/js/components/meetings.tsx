@@ -11,7 +11,11 @@ import {
 } from "@/components/ui/dropdown-menu"
 import { EllipsisVertical, Plus } from 'lucide-react'
 import { useRoute } from 'vendor/tightenco/ziggy/src/js'
-const MeetingCard = () => {
+
+interface MeetingProp {
+    onOpenDialog: (state: string) => void;
+}
+const MeetingCard = ({ onOpenDialog }: MeetingProp) => {
     const [meetings, setMeetings] = useState<string[] | any>([]);
     const [isDialogOpen, setIsDialogOpen] = useState(false);
     const [meetingState, setMeetingState] = useState<'pending' | 'attended' | 'postpond' | 'cancelled'>('pending');
@@ -115,19 +119,45 @@ const MeetingCard = () => {
     }, []);
 
     // Handle Meeting State
-    const handleMeetingState = (state: string) => {
+    const handleMeetingState = (state: string, id: number) => {
         switch (state) {
             case 'attended':
                 setMeetingState(state);
-                window.location.href = '/meetings';
+                if (window.location.pathname !== '/messages') {
+                    window.location.href = '/messages';
+                }
+                else {
+                    const meeting = meetings.find((meeting: any) => meeting.id === id)
+                    const updateStatus = [meeting].map((meeting: any) => meeting.status = state);
+                    setMeetings([...meetings, updateStatus]);
+                    console.log(meetings);
+                }
                 break;
             case 'postpond':
                 setMeetingState(state);
-                window.location.href = '/meetings';
+                if (window.location.pathname !== '/messages') {
+                    window.location.href = '/messages';
+                }
+                else {
+                    const meeting = meetings.find((meeting: any) => meeting.id === id)
+                    const updateStatus = [meeting].map((meeting: any) => meeting.status = state);
+                    setMeetings([...meetings, updateStatus]);
+                    onOpenDialog(state);
+                    console.log(meetings);
+                }
                 break;
             case 'cancelled':
                 setMeetingState(state);
-                window.location.href = '/meetings';
+                if (window.location.pathname !== '/messages') {
+                    window.location.href = '/messages';
+                }
+                else {
+                    const meeting = meetings.find((meeting: any) => meeting.id === id)
+                    const updateStatus = [meeting].map((meeting: any) => meeting.status = state);
+                    setMeetings([...meetings, updateStatus]);
+                    onOpenDialog(state);
+                    console.log(meetings);
+                }
                 break;
             default:
                 setMeetingState('pending');
@@ -172,11 +202,11 @@ const MeetingCard = () => {
                                             <DropdownMenu>
                                                 <DropdownMenuTrigger className='text-primary/70'><EllipsisVertical className='h-4 w-4' /></DropdownMenuTrigger>
                                                 <DropdownMenuContent>
-                                                    <DropdownMenuItem onClick={() => handleMeetingState('attended')}
+                                                    <DropdownMenuItem onClick={() => handleMeetingState('attended', meeting.id)}
                                                     >Attended</DropdownMenuItem>
-                                                    <DropdownMenuItem onClick={() => handleMeetingState('postpond')}
+                                                    <DropdownMenuItem onClick={() => handleMeetingState('postpond', meeting.id)}
                                                     >Postpond</DropdownMenuItem>
-                                                    <DropdownMenuItem onClick={() => handleMeetingState('cancelled')}
+                                                    <DropdownMenuItem onClick={() => handleMeetingState('cancelled', meeting.id)}
                                                     >Cancelled</DropdownMenuItem>
                                                 </DropdownMenuContent>
                                             </DropdownMenu>
