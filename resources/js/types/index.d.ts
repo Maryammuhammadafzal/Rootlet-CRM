@@ -63,6 +63,7 @@ export interface DepartmentCard {
 }
 
 export interface ActivityFeeds {
+    id: string;
     avatar?: string;
     type: string;
     name: string;
@@ -74,5 +75,5 @@ export interface ActivityFeeds {
     designation: string;
     status: string;
     reply: string;
-
+    created_at: string;
 }

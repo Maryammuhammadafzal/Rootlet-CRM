@@ -14,6 +14,7 @@ const ActivityFeed = () => {
 
     const activityFeeds: ActivityFeeds[] = [
         {
+            id: Date.now().toString(),
             avatar: '/images/user-avatar.png',
             type: 'leave',
             name: 'username',
@@ -24,9 +25,11 @@ const ActivityFeed = () => {
             depart: 'software',
             designation: 'Product Designer',
             status: 'pending',
-            reply: ''
+            reply: '',
+            created_at: Date.now().toString()
         },
         {
+            id: Date.now().toString(),
             avatar: '/images/user-avatar.png',
             type: 'leave',
             name: 'username',
@@ -37,9 +40,11 @@ const ActivityFeed = () => {
             depart: 'software',
             designation: 'Product Designer',
             status: 'pending',
-            reply: ''
+            reply: '',
+            created_at: Date.now().toString()
         },
         {
+            id: Date.now().toString(),
             avatar: '/images/user-avatar.png',
             type: 'leave',
             name: 'username',
@@ -50,15 +55,17 @@ const ActivityFeed = () => {
             depart: 'software',
             designation: 'Product Designer',
             status: 'pending',
-            reply: ''
+            reply: '',
+            created_at: Date.now().toString()
         },
     ];
     const getTime = (value: string | undefined) => {
 
         if (value !== undefined) {
-            const time = new Date('Tue Aug 26 2025 16:22:53 GMT+0500');
-            const now = new Date();
+            const time = new Date('Tue Aug 26 2025 16:22:53 GMT+0500') as any;
+            const now = new Date() as any;
             const diffInMs = now - time;
+
 
             // Convert milliseconds to seconds
             const diffInSeconds = Math.floor(diffInMs / 1000);
@@ -118,7 +125,7 @@ const ActivityFeed = () => {
 
             <CardContent className='space-y-6'>
                 {activityFeeds.map((activity, i) => (
-                    <div className='flex justify-between items-center h-auto w-full'>
+                    <div key={i} className='flex justify-between items-center h-auto w-full'>
                         {/* Left Content */}
                         <div className='flex gap-2'>
                             <img src={activity.avatar} alt={activity.name} className='w-9 h-8 rounded-full' />

@@ -9,7 +9,7 @@ export function NavMain({ items = [] }: { items: NavItem[] }) {
         <>
             {
                 items && items.map((item, index) => (
-                    <SidebarGroup className="py-0 dark:bg-accent">
+                    <SidebarGroup key={item.navName} className="py-0 dark:bg-accent">
                         <SidebarGroupLabel className='text-base font-semibold text-primary uppercase'>{item.navName}</SidebarGroupLabel>
                         <SidebarMenu className='pl-3'>
                             {item.navItems && item.navItems.map((navItem) => (
