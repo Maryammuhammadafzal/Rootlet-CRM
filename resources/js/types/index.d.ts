@@ -77,3 +77,19 @@ export interface ActivityFeeds {
     reply: string;
     created_at: string;
 }
+
+export interface Meetings {
+    id: number;
+    title: string; // Interview | Meeting with manager
+    date: string; // Thu 30
+    start_time: string; // 9 : 30 am
+    end_time: string; // 11 : 00 pm
+    description: string; // Interview for hiring a new Web developer
+    status: string; // pending | attended | postpond | cancelled
+    post_reason: string; // The interview is Postpond due to ...
+    cancel_reason: string; // The interview is Cancelled due to ...
+    new_date: string; // New Date after postpond
+    new_start_time: string; // New Start Time after postpond
+    new_end_time: string; // New Start Time after postpond
+    created_at: string;
+}

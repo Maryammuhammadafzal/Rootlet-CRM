@@ -1,4 +1,5 @@
-import React from 'react'
+'use client'
+import React, { useState } from 'react'
 import { Card, CardContent } from './ui/card'
 import {
     Select,
@@ -7,7 +8,17 @@ import {
     SelectTrigger,
     SelectValue,
 } from "@/components/ui/select"
+import { Meetings } from '@/types'
 const MeetingCard = () => {
+    const [meetings, setMeetings] = useState<string[] | null>([]);
+
+    // Fetch Meeting Data
+    const meetingData: Meetings[] = [
+{
+
+}
+    ]
+
     return (
         <Card className='bg-card shadow-none border-0'>
             <CardContent>
