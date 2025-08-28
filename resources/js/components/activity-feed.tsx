@@ -9,6 +9,14 @@ import {
 } from "@/components/ui/select"
 import { Button } from '@headlessui/react'
 import { ActivityFeeds } from '@/types'
+import {
+    DropdownMenu,
+    DropdownMenuContent,
+    DropdownMenuItem,
+    DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
+import { EllipsisVertical, Plus } from 'lucide-react'
+
 const ActivityFeed = () => {
     const [isChecked, setIsChecked] = useState<'all' | 'apply' | 'message'>()
 
@@ -180,13 +188,29 @@ const ActivityFeed = () => {
                             </div>
                         </div>
                         {/* Right Button */}
-                        {activity.activity === 'apply' ?
-                            (
-                                <Button className={`bg-[#377DFF33] text-[#377DFF] rounded-md text-sm px-4 py-1.5`}>Applying</Button>
-                            ) : (
-                                <Button className={`bg-[#38CB8933] text-[#38CB89] rounded-md text-sm px-4 py-1.5`}>Message</Button>
-                            )
-                        }
+                        <div className='flex gap-1'>
+                            {activity.activity === 'apply' ?
+                                (
+                                    <Button className={`bg-[#377DFF33] text-[#377DFF] rounded-md text-sm px-4 py-1.5`}>Applying</Button>
+                                ) : (
+                                    <Button className={`bg-[#38CB8933] text-[#38CB89] rounded-md text-sm px-4 py-1.5`}>Message</Button>
+                                )
+                            }
+                            {/* Three dots button */}
+                            <div className='w-6 h-6 m-2 '>
+                                <DropdownMenu>
+                                    <DropdownMenuTrigger className='text-primary/70'><EllipsisVertical className='h-4 w-4' /></DropdownMenuTrigger>
+                                    <DropdownMenuContent>
+                                        <DropdownMenuItem onClick={() => handleMeetingState('attended', meeting.id)}
+                                        >Attended</DropdownMenuItem>
+                                        <DropdownMenuItem onClick={() => handleMeetingState('postpond', meeting.id)}
+                                        >Postpond</DropdownMenuItem>
+                                        <DropdownMenuItem onClick={() => handleMeetingState('cancelled', meeting.id)}
+                                        >Cancelled</DropdownMenuItem>
+                                    </DropdownMenuContent>
+                                </DropdownMenu>
+                            </div>
+                        </div>
                     </div>
                 ))}
             </CardContent>

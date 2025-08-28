@@ -33,11 +33,11 @@ export default function Messages() {
             <Head title="Messages" />
             <div className="relative h-auto flex-1 overflow-hidden rounded-xl gap-5 p-6 md:min-h-min grid lg:grid-cols-2 grid-cols-1">
                 {/* Activity Feeds */}
-                <div className='h-auto col-span-1 bg-primary/5 rounded-xl '>
+                <div className='h-fit col-span-1 bg-primary/5 rounded-xl '>
                     <ActivityFeed />
                 </div>
                 {/* Meetings */}
-                <div className='col-span-1 h-auto bg-primary/5 rounded-xl '>
+                <div className='col-span-1 h-fit bg-primary/5 rounded-xl '>
                     <MeetingCard onOpenDialog={handleMeetingDialog} />
                 </div>
 

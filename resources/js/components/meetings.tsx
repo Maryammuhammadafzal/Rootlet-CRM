@@ -10,7 +10,6 @@ import {
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { EllipsisVertical, Plus } from 'lucide-react'
-import { useRoute } from 'vendor/tightenco/ziggy/src/js'
 
 interface MeetingProp {
     onOpenDialog: (state: string) => void;
@@ -115,7 +114,7 @@ const MeetingCard = ({ onOpenDialog }: MeetingProp) => {
     ];
 
     useEffect(() => {
-        setMeetings(meetingData);
+        setMeetings(meetingData);   
     }, []);
 
     // Handle Meeting State
@@ -129,7 +128,8 @@ const MeetingCard = ({ onOpenDialog }: MeetingProp) => {
                 else {
                     const meeting = meetings.find((meeting: any) => meeting.id === id)
                     const updateStatus = [meeting].map((meeting: any) => meeting.status = state);
-                    setMeetings([...meetings, updateStatus]);
+                    console.log(updateStatus);
+                    setMeetings([...meetings]);
                     console.log(meetings);
                 }
                 break;
@@ -172,7 +172,7 @@ const MeetingCard = ({ onOpenDialog }: MeetingProp) => {
                 <CardContent>
                     <div className='w-ful flex justify-between'>
                         <h2 className='font-medium text-xl mb-8'>Meetings</h2>
-                        <Button className='bg-card border border-primary/5 px-8 py-1 text-center text-primary'>
+                        <Button className='bg-card border hover:bg-primary/10 border-primary/5 px-8 py-1 text-center text-primary'>
                             <Plus className='h-4 w-4' /> Create New
                         </Button>
                     </div>
