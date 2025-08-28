@@ -18,8 +18,10 @@ import {
 import { EllipsisVertical, Plus } from 'lucide-react'
 
 const ActivityFeed = () => {
-    const [isChecked, setIsChecked] = useState<'all' | 'apply' | 'message'>()
+    const [isChecked, setIsChecked] = useState<'all' | 'apply' | 'message'>('all');
+    const [activvityState, setActivityState] = useState()
 
+    // Activity Feeds Data
     const activityFeeds: ActivityFeeds[] = [
         {
             id: Date.now().toString(),
@@ -112,6 +114,7 @@ const ActivityFeed = () => {
             created_at: Date.now().toString()
         },
     ];
+    // Time parsed
     const getTime = (value: string | undefined) => {
 
         if (value !== undefined) {
@@ -138,12 +141,10 @@ const ActivityFeed = () => {
             return formattedDiff;
         } else {
             console.log('Time not given');
-
         }
     }
 
-
-
+    // Activity Filter
     const handleActiviyChecked = (value: string) => {
 
         switch (value) {
@@ -156,7 +157,53 @@ const ActivityFeed = () => {
             default:
                 return setIsChecked('all')
         }
-    }
+    };
+
+    // const habdleActivityStats = (state: string, id: number) => {
+    //     switch (state) {
+    //         case 'attended':
+    //             setMeetingState(state);
+    //             if (window.location.pathname !== '/messages') {
+    //                 window.location.href = '/messages';
+    //             }
+    //             else {
+    //                 const meeting = meetings.find((meeting: any) => meeting.id === id)
+    //                 const updateStatus = [meeting].map((meeting: any) => meeting.status = state);
+    //                 console.log(updateStatus);
+    //                 setMeetings([...meetings]);
+    //                 console.log(meetings);
+    //             }
+    //             break;
+    //         case 'postpond':
+    //             setMeetingState(state);
+    //             if (window.location.pathname !== '/messages') {
+    //                 window.location.href = '/messages';
+    //             }
+    //             else {
+    //                 const meeting = meetings.find((meeting: any) => meeting.id === id)
+    //                 const updateStatus = [meeting].map((meeting: any) => meeting.status = state);
+    //                 setMeetings([...meetings, updateStatus]);
+    //                 onOpenDialog(state);
+    //                 console.log(meetings);
+    //             }
+    //             break;
+    //         case 'cancelled':
+    //             setMeetingState(state);
+    //             if (window.location.pathname !== '/messages') {
+    //                 window.location.href = '/messages';
+    //             }
+    //             else {
+    //                 const meeting = meetings.find((meeting: any) => meeting.id === id)
+    //                 const updateStatus = [meeting].map((meeting: any) => meeting.status = state);
+    //                 setMeetings([...meetings, updateStatus]);
+    //                 onOpenDialog(state);
+    //                 console.log(meetings);
+    //             }
+    //             break;
+    //         default:
+    //             setMeetingState('pending');
+    //     }
+    // };
     return (
         <Card className='bg-transparent shadow-none border-0'>
             <CardHeader className='w-full flex justify-between'>
@@ -201,12 +248,12 @@ const ActivityFeed = () => {
                                 <DropdownMenu>
                                     <DropdownMenuTrigger className='text-primary/70'><EllipsisVertical className='h-4 w-4' /></DropdownMenuTrigger>
                                     <DropdownMenuContent>
-                                        <DropdownMenuItem onClick={() => handleMeetingState('attended', meeting.id)}
+                                        {/* <DropdownMenuItem onClick={() => handleMeetingState('attended', meeting.id)}
                                         >Attended</DropdownMenuItem>
                                         <DropdownMenuItem onClick={() => handleMeetingState('postpond', meeting.id)}
                                         >Postpond</DropdownMenuItem>
                                         <DropdownMenuItem onClick={() => handleMeetingState('cancelled', meeting.id)}
-                                        >Cancelled</DropdownMenuItem>
+                                        >Cancelled</DropdownMenuItem> */}
                                     </DropdownMenuContent>
                                 </DropdownMenu>
                             </div>
