@@ -10,14 +10,16 @@ import {
 
 
 const AttendanceCard = () => {
-    const [filterEmployeeName, setFilterEmployeeName] = useState()
+    const [filterEmployeeName, setFilterEmployeeName] = useState('')
     const [employeeDepartment, setEmployeeDepartment] = useState<'all' | 'software' | 'sales' | 'auto-trade' | 'eht-e-salat'>('software')
+    
+    
     return (
         <div className='w-full h-auto flex justify-center items-center'>
             {/* Filter */}
             <div className='w-full grid lg:px-4 lg:grid-cols-4 md:grid-cols-2 gap-4'>
                 {/* Filter by Name */}
-                <Input name='employee-name' id='employee-name' placeholder='Employee Name' onChange={()=> setFilterEmployeeName()} />
+                <Input name='employee-name' id='employee-name' placeholder='Employee Name' />
                 {/* Filter by Id */}
                 <Input name='employee-id' id='employee-id' placeholder='Employee ID' />
                 {/* Filter bu Department */}

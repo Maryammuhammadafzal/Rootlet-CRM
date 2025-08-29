@@ -79,6 +79,7 @@ const departmentCard: DepartmentCard[] = [
 ]
 
 export default function Dashboard() {
+    const isDialogOpen = false;
     
     return (
         <AppLayout breadcrumbs={breadcrumbs}>
@@ -143,7 +144,7 @@ export default function Dashboard() {
                     </div>
                     {/* Meetings */}
                     <div className='col-span-1 h-auto bg-primary/5 rounded-xl '>
-                        <MeetingCard />
+                        <MeetingCard onOpenDialog={()=> isDialogOpen} />
                     </div>
                 </div>
             </div>

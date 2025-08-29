@@ -14,22 +14,38 @@ import SettingsLayout from '@/layouts/settings/layout';
 
 const breadcrumbs: BreadcrumbItem[] = [
     {
-        title: 'Profile settings',
+        title: 'Settings',
         href: '/settings/profile',
     },
 ];
 
 type ProfileForm = {
-    name: string;
-    email: string;
+    id: number;
+    first_name: string;
+    last_name?: string;
+    user_email: string;
+    phone_no: string;
+    account_no: string;
+    iban_no: string;
+    qualification: string;
+    employee_id: string;
+    employee_picture?: string;
 };
 
 export default function Profile({ mustVerifyEmail, status }: { mustVerifyEmail: boolean; status?: string }) {
-    const { auth } = usePage<SharedData>().props;
+    const { user_profile } = usePage<SharedData>().props;
 
     const { data, setData, patch, errors, processing, recentlySuccessful } = useForm<Required<ProfileForm>>({
-        name: auth.user.name,
-        email: auth.user.email,
+        id: user_profile.user_profile.id,
+        first_name: user_profile.user_profile.first_name,
+        last_name: user_profile.user_profile.last_name,
+        user_email: user_profile.user_profile.user_email,
+        phone_no: user_profile.user_profile.phone_no,
+        account_no: user_profile.user_profile.account_no,
+        iban_no: user_profile.user_profile.iban_no,
+        qualification: user_profile.user_profile.qualification,
+        employee_id: user_profile.user_profile.employee_id,
+        employee_picture: user_profile.user_profile.employee_picture
     });
 
     const submit: FormEventHandler = (e) => {
@@ -42,29 +58,112 @@ export default function Profile({ mustVerifyEmail, status }: { mustVerifyEmail: 
 
     return (
         <AppLayout breadcrumbs={breadcrumbs}>
-            <Head title="Profile settings" />
+            <Head title="Settings" />
 
             <SettingsLayout>
                 <div className="space-y-6">
-                    <HeadingSmall title="Profile information" description="Update your name and email address" />
+                    <HeadingSmall title="Profile information" description="Update your personal details and contact information." />
 
                     <form onSubmit={submit} className="space-y-6">
-                        <div className="grid gap-2">
-                            <Label htmlFor="name">Name</Label>
+                        <div className='grid sm:grid-cols-2 grid-cols-1 text-primary gap-10'>
+                            <div className="grid gap-2">
+                                <Label htmlFor="first-name">Name</Label>
 
-                            <Input
-                                id="name"
-                                className="mt-1 block w-full"
-                                value={data.name}
-                                onChange={(e) => setData('name', e.target.value)}
-                                required
-                                autoComplete="name"
-                                placeholder="Full name"
-                            />
+                                <Input
+                                    id="first-name"
+                                    className="mt-1 block w-full"
+                                    value={data.first_name}
+                                    onChange={(e) => setData('first_name', e.target.value)}
+                                    required
+                                    autoComplete="first-name"
+                                    placeholder="Name"
+                                />
 
-                            <InputError className="mt-2" message={errors.name} />
+                                <InputError className="mt-2" message={errors.first_name} />
+                            </div>
+                            <div className="grid gap-2">
+                                <Label htmlFor="last-name">Father Name</Label>
+
+                                <Input
+                                    id="last-name"
+                                    className="mt-1 block w-full"
+                                    value={data.last_name}
+                                    onChange={(e) => setData('last_name', e.target.value)}
+                                    required
+                                    autoComplete="last-name"
+                                    placeholder="Father name"
+                                />
+
+                                <InputError className="mt-2" message={errors.last_name} />
+                            </div>
+
                         </div>
+                        <div className='grid sm:grid-cols-2 grid-cols-1 text-primary gap-10'>
+                            <div className="grid gap-2">
+                                <Label htmlFor="first-name">Name</Label>
 
+                                <Input
+                                    id="first-name"
+                                    className="mt-1 block w-full"
+                                    value={data.first_name}
+                                    onChange={(e) => setData('first_name', e.target.value)}
+                                    required
+                                    autoComplete="first-name"
+                                    placeholder="Name"
+                                />
+
+                                <InputError className="mt-2" message={errors.first_name} />
+                            </div>
+                            <div className="grid gap-2">
+                                <Label htmlFor="last-name">Father Name</Label>
+
+                                <Input
+                                    id="last-name"
+                                    className="mt-1 block w-full"
+                                    value={data.last_name}
+                                    onChange={(e) => setData('last_name', e.target.value)}
+                                    required
+                                    autoComplete="last-name"
+                                    placeholder="Father name"
+                                />
+
+                                <InputError className="mt-2" message={errors.last_name} />
+                            </div>
+
+                        </div>
+                        <div className='grid sm:grid-cols-2 grid-cols-1 text-primary gap-10'>
+                            <div className="grid gap-2">
+                                <Label htmlFor="first-name">Name</Label>
+
+                                <Input
+                                    id="first-name"
+                                    className="mt-1 block w-full"
+                                    value={data.first_name}
+                                    onChange={(e) => setData('first_name', e.target.value)}
+                                    required
+                                    autoComplete="first-name"
+                                    placeholder="Name"
+                                />
+
+                                <InputError className="mt-2" message={errors.first_name} />
+                            </div>
+                            <div className="grid gap-2">
+                                <Label htmlFor="last-name">Father Name</Label>
+
+                                <Input
+                                    id="last-name"
+                                    className="mt-1 block w-full"
+                                    value={data.last_name}
+                                    onChange={(e) => setData('last_name', e.target.value)}
+                                    required
+                                    autoComplete="last-name"
+                                    placeholder="Father name"
+                                />
+
+                                <InputError className="mt-2" message={errors.last_name} />
+                            </div>
+
+                        </div>
                         <div className="grid gap-2">
                             <Label htmlFor="email">Email address</Label>
 

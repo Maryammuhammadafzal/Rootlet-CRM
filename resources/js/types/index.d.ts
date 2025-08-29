@@ -4,6 +4,9 @@ import type { Config } from 'ziggy-js';
 export interface Auth {
     user: User;
 }
+export interface Profile {
+    user_profile: UserProfile;
+}
 
 export interface BreadcrumbItem {
     title: string;
@@ -31,6 +34,7 @@ export interface SharedData {
     name: string;
     quote: { message: string; author: string };
     auth: Auth;
+    user_profile: Profile;
     ziggy: Config & { location: string };
     sidebarOpen: boolean;
     [key: string]: unknown;
@@ -45,6 +49,19 @@ export interface User {
     created_at: string;
     updated_at: string;
     [key: string]: unknown; // This allows for additional properties...
+}
+
+export interface UserProfile {
+    id: number;
+    first_name: string;
+    last_name?: string;
+    user_email: string;
+    phone_no: string;
+    account_no: string;
+    iban_no: string;
+    qualification: string;
+    employee_id: string;
+    employee_picture?: string;
 }
 
 export interface DashboardCard {
