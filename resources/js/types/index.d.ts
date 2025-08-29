@@ -54,14 +54,19 @@ export interface User {
 export interface UserProfile {
     id: number;
     first_name: string;
-    last_name?: string;
+    last_name: string;
     user_email: string;
     phone_no: string;
     account_no: string;
     iban_no: string;
     qualification: string;
     employee_id: string;
-    employee_picture?: string;
+    employee_picture: string;
+}
+
+export interface ProfileSettingProp {
+    processing: boolean;
+    recentlySuccessful: boolean;
 }
 
 export interface DashboardCard {
