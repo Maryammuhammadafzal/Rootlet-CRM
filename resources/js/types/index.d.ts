@@ -137,7 +137,7 @@ export interface EmployeePersonalInfoForm {
     employee_position: string;
     employee_shifts: string;
     employee_join_date: string;
-    employee_type: string;
+    employeement_type: string;
     employee_status: string;
     employee_exit_date: string;
     employee_working_hours: string;

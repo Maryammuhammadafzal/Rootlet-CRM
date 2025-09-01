@@ -63,7 +63,7 @@ interface EmployeeLayoutProp extends PropsWithChildren, EmployeeSettingProp {
         employee_picture: string;
     };
     onSave: () => void;
- }
+}
 
 export default function EmployeeLayout({ children, processing, recentlySuccessful, employee_details, onSave }: EmployeeLayoutProp) {
     // When server-side rendering, we only render the layout on the client...
@@ -89,8 +89,8 @@ export default function EmployeeLayout({ children, processing, recentlySuccessfu
                         {/* User Info */}
                         <div className='flex flex-col h-auto w-auto'>
                             <h2 className='admin-name text-lg font-semibold mb-1 text-primary'>{`${employee_details?.employee_name} ${employee_details?.employee_father_name}` || 'Name'}</h2>
-                            <p className='admin-email text-xs text-primary/50'>{employee_details?.employee_email ||'Email'}</p>
-                            <p className='employee-id text-xs text-primary/50'>{employee_details?.employee_id ||'Employee ID'}</p>
+                            <p className='admin-email text-xs text-primary/50'>{employee_details?.employee_email || 'Email'}</p>
+                            <p className='employee-id text-xs text-primary/50'>{employee_details?.employee_id || 'Employee ID'}</p>
                         </div>
                     </div>
                     {/* Right Button */}
