@@ -4,26 +4,26 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import InputError from '@/components/input-error';
 
-const EmployeePersonalDetailedForm = (data : any) => {
+const EmployeePersonalDetailedForm = (data: any, setData: ({...data, key:value}) => void) => {
     return (
         <div className='w-full h-auto flex flex-col'>
 
             <div className='grid sm:grid-cols-2 grid-cols-1 text-primary gap-10'>
                 {/* Name */}
                 <div className="grid gap-2">
-                    <Label className='text-sm' htmlFor="first-name">Name</Label>
+                    <Label className='text-sm' htmlFor="employee-name">Employee Name</Label>
 
                     <Input
-                        id="first-name"
+                        id="employee-name"
                         className="mt-1 block w-full text-[10px] font-light bg-primary/5"
-                        value={data.first_name}
-                        onChange={(e) => setData('first_name', e.target.value)}
+                        value={data.employee_name}
+                        onChange={(e) => setData('employee_name', e.target.value)}
                         required
-                        autoComplete="first-name"
+                        autoComplete="employee-name"
                         placeholder="Name"
                     />
 
-                    <InputError className="mt-2" message={errors.first_name} />
+                    <InputError className="mt-2" message={errors.employee_name} />
                 </div>
 
                 {/* Father Name */}

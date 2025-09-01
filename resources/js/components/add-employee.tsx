@@ -3,7 +3,7 @@ import { useForm, usePage } from '@inertiajs/react';
 import { FormEventHandler, useRef } from 'react';
 import HeadingSmall from '@/components/heading-small';
 import EmployeeLayout from '@/layouts/app/employees/layout';
-import EmployeePersonalDetailedForm from './employee-personal-details-form';
+import EmployeePersonalDetailedForm from '@/types';
 
 type EmployeePersonalInfoForm = {
     employee_id: number;
@@ -96,7 +96,7 @@ const AddEmployee = () => {
                 <HeadingSmall title="Profile information" description="Update your personal details and contact information." />
                 {/* Employee Personal Detail Form */}
                 <form ref={formRef} onSubmit={submit} className="space-y-6">
-                    <EmployeePersonalDetailedForm data={data} />
+                    <EmployeePersonalDetailedForm data={data} setData={()=> setData({...data})} />
 
                     {/* {mustVerifyEmail && auth.user.email_verified_at === null && (
                             <div>

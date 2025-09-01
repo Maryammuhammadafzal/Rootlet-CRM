@@ -56,11 +56,33 @@ const sidebarNavItems: NavItem[] = [
 
 interface EmployeeLayoutProp extends PropsWithChildren, EmployeeSettingProp {
     employee_details: {
-        employee_name: string;
-        employee_father_name: string;
-        employee_id: number;
-        employee_email: string;
-        employee_picture: string;
+      employee_id: number;
+    employee_name: string;
+    employee_father_name: string;
+    employee_email: string;
+    employee_cnic: string;
+    employee_born_date: string;
+    employee_contact: string;
+    employee_religion: string;
+    employee_nationality: string;
+    employee_gender: string;
+    employee_marital_status: string;
+    employee_designation: string;
+    employee_department: string;
+    employee_position: string;
+    employee_shifts: string;
+    employee_join_date: string;
+    employeement_type: string;
+    employee_status: string;
+    employee_exit_date: string;
+    employee_working_hours: string;
+    employee_salary: string;
+    employee_emergency_contact_1_no: string;
+    employee_emergency_contact_1_name: string;
+    employee_emergency_contact_1_relation: string;
+    employee_emergency_contact_2_no?: string;
+    employee_emergency_contact_2_name?: string;
+    employee_emergency_contact_2_relation?: string;
     };
     onSave: () => void;
 }
