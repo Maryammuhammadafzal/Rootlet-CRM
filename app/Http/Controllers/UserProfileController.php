@@ -2,17 +2,26 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\UserProfile;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class UserProfileController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
-    {
-        //
-    }
+   public function index()
+{
+    $userProfile = UserProfile::where("user_id", auth()->guard()->id())->get();
+    return Inertia::render("settings/profile", [
+        "userProfile" => $userProfile,
+        "flash" => [
+            'success' => $userProfile->isNotEmpty() ? 'Data loaded successfully!' : 'No profile data found.',
+            'error' => session('error')
+        ]
+    ]);
+}
 
     /**
      * Show the form for creating a new resource.

@@ -32,10 +32,19 @@ type ProfileForm = {
     employee_picture: string;
 };
 
+interface UserProfileProp {
+    userProfile : ProfileForm[];
+    flash?: {
+        success?: string;
+        error?: string;
+    }
+}
+
 // export default function Profile({ mustVerifyEmail, status }: { mustVerifyEmail: boolean; status?: string }) {
-export default function Profile() {
+export default function Profile({userProfile ,flash}:UserProfileProp) {
     const { user_profile, auth } = usePage<SharedData>().props;
 
+    console.log(flash?.success);
     const { data, setData, patch, errors, processing, recentlySuccessful } = useForm<ProfileForm>({
         id: auth.user?.id ?? 1,
         first_name: user_profile?.user_profile?.first_name || auth.user?.name || '',
