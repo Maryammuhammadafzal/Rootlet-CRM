@@ -7,6 +7,9 @@ export interface Auth {
 export interface Profile {
     user_profile: UserProfile;
 }
+export interface EmployeePersonalInformation {
+    employee_details: EmployeePersonalInfoForm;
+}
 
 export interface BreadcrumbItem {
     title: string;
@@ -35,6 +38,7 @@ export interface SharedData {
     quote: { message: string; author: string };
     auth: Auth;
     user_profile: Profile;
+    employee_details: EmployeePersonalInformation;
     ziggy: Config & { location: string };
     sidebarOpen: boolean;
     [key: string]: unknown;
@@ -144,4 +148,8 @@ export interface EmployeePersonalInfoForm {
     employee_emergency_contact_2_no?: string;
     employee_emergency_contact_2_name?: string;
     employee_emergency_contact_2_relation?: string;
+}
+export interface EmployeeSettingProp {
+    processing: boolean;
+    recentlySuccessful: boolean;
 }

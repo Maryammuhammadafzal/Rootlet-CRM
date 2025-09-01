@@ -5,8 +5,9 @@ import { BreadcrumbItem } from '@/types';
 import { Head } from '@inertiajs/react';
 import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Button } from '@headlessui/react';
 import AddEmployee from '@/components/add-employee';
+import { Plus } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
 
 const breadcrumbs: BreadcrumbItem[] = [
@@ -16,8 +17,8 @@ const breadcrumbs: BreadcrumbItem[] = [
     },
 ];
 
-export default function Employees () {
-    const [departments, setDepartments] = useState<string | ''>('');
+export default function Employees() {
+    const [departments, setDepartments] = useState<string | 'Employee Department'>('Employee Department');
     const [openAddEmployee, setOpenAddEmployee] = useState<boolean>(false);
 
     const allDepartments = [
@@ -35,7 +36,7 @@ export default function Employees () {
     };
 
     const addEmployee = () => {
-
+        setOpenAddEmployee(true);
     }
     return (
         <AppLayout breadcrumbs={breadcrumbs}>
@@ -43,14 +44,14 @@ export default function Employees () {
             {/* Employee Page */}
             <div className="relative h-auto flex-1 overflow-hidden rounded-xl gap-5 p-6 md:min-h-min grid grid-cols-1">
                 {openAddEmployee ? (<AddEmployee />) : (
-                    <div className='w-full h-auto flex flex-col gap-5'>
+                    <div className='w-full h-auto flex flex-col gap-5 lg:px-5'>
                         {/* Filters */}
                         <div className='grid lg:grid-cols-4 sm:grid-cols-2 grid-cols-1 gap-4 w-full h-auto'>
                             <Input type='text' id='employee_name' name="employee_name" placeholder='Employee Name' />
                             <Input type='text' id='employee_id' name="employee_id" placeholder='Employee ID' />
-                            <div className="">
+                            <div className="w-full">
                                 <Select>
-                                    <SelectTrigger className="w-[120px]">
+                                    <SelectTrigger className="w-full">
                                         <SelectValue placeholder="All activity" defaultValue={'All activity'} />
                                     </SelectTrigger>
                                     <SelectContent>
@@ -60,8 +61,10 @@ export default function Employees () {
                                     </SelectContent>
                                 </Select>
                             </div>
-                            <div>
-                                <Button onClick={addEmployee}>Add Employees</Button>
+                            <div className='w-full flex justify-end'>
+                                <Button onClick={addEmployee}>
+                                    <Plus /> Add Employee
+                                </Button>
                             </div>
                         </div>
 

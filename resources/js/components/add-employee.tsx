@@ -11,6 +11,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import AppLayout from '@/layouts/app-layout';
 import SettingsLayout from '@/layouts/settings/layout';
+import EmployeeLayout from '@/layouts/app/employees/layout';
 
 type EmployeePersonalInfoForm = {
     employee_id: number;
@@ -43,6 +44,8 @@ type EmployeePersonalInfoForm = {
 }
 
 const AddEmployee = () => {
+    const { employee_details, auth } = usePage<SharedData>().props;
+
     const { data, setData, patch, errors, processing, recentlySuccessful } = useForm<EmployeePersonalInfoForm>({
         id: employee_id ?? 0,
         first_name: user_profile?.user_profile?.first_name || auth.user?.name || '',
@@ -66,25 +69,24 @@ const AddEmployee = () => {
         }
     };
 
-    const submit: FormEventHandler = (e) => {
-        e.preventDefault();
-        console.log('Form data:', data);
-        patch(route('profile.update'), {
-            preserveScroll: true,
-            onSuccess: () => console.log('Profile updated successfully'),
-            onError: (errors) => console.log('Update failed:', errors),
-        });
-    };
+    // const submit: FormEventHandler = (e) => {
+    //     e.preventDefault();
+    //     console.log('Form data:', data);
+    //     patch(route('profile.update'), {
+    //         preserveScroll: true,
+    //         onSuccess: () => console.log('Profile updated successfully'),
+    //         onError: (errors) => console.log('Update failed:', errors),
+    //     });
+    // };
 
     // Ensure form is rendered on client-side
     if (typeof window === 'undefined') return null;
     return (
-        <SettingsLayout processing={processing} recentlySuccessful={recentlySuccessful} user_profile={user_profile?.user_profile} onSave={handleSubmit}>
+        <EmployeeLayout processing={processing} recentlySuccessful={recentlySuccessful} employee_details={employee_details} onSave={handleSubmit}>
             <div className="space-y-6">
                 <HeadingSmall title="Profile information" description="Update your personal details and contact information." />
 
                 <form ref={formRef} onSubmit={submit} className="space-y-6">
-
 
                     <div className='grid sm:grid-cols-2 grid-cols-1 text-primary gap-10'>
                         {/* Name */}
@@ -269,7 +271,7 @@ const AddEmployee = () => {
             </div>
 
             {/* <DeleteUser /> */}
-        </SettingsLayout>
+        </Emplo>
     )
 }
 

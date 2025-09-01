@@ -18,7 +18,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('employees', function () {
         return Inertia::render('employees');
     })->name('employees');
-    Route::resource('userProfile', UserProfileController::class);
+    // Route::resource('userProfile', UserProfileController::class);
 });
 
 require __DIR__.'/settings.php';
