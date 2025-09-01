@@ -44,7 +44,7 @@ type EmployeePersonalInfoForm = {
 
 const AddEmployee = () => {
     const { data, setData, patch, errors, processing, recentlySuccessful } = useForm<EmployeePersonalInfoForm>({
-        employee_id: employee_id ?? 0,
+        id: employee_id ?? 0,
         first_name: user_profile?.user_profile?.first_name || auth.user?.name || '',
         last_name: user_profile?.user_profile?.last_name || '',
         user_email: user_profile?.user_profile?.user_email || auth.user?.email || '',

@@ -16,7 +16,7 @@ const breadcrumbs: BreadcrumbItem[] = [
     },
 ];
 
-export default function Employees() {
+export default function Employees () {
     const [departments, setDepartments] = useState<string | ''>('');
     const [openAddEmployee, setOpenAddEmployee] = useState<boolean>(false);
 
